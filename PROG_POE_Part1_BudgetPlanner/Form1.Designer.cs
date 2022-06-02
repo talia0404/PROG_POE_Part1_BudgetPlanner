@@ -31,47 +31,52 @@ namespace PROG_POE_Part1_BudgetPlanner
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculate = new System.Windows.Forms.Button();
-            this.nudMonthlyIncome = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.nudGroceries = new System.Windows.Forms.NumericUpDown();
-            this.nudWaterLights = new System.Windows.Forms.NumericUpDown();
-            this.nudTravel = new System.Windows.Forms.NumericUpDown();
-            this.nudPhone = new System.Windows.Forms.NumericUpDown();
-            this.nudOtherEx = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.nudTax = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbChooseHousing = new System.Windows.Forms.ComboBox();
             this.lblRentAmount = new System.Windows.Forms.Label();
             this.lblEnter = new System.Windows.Forms.Label();
-            this.nudRentAmount = new System.Windows.Forms.NumericUpDown();
             this.lblPurchasePrice = new System.Windows.Forms.Label();
             this.lblDeposit = new System.Windows.Forms.Label();
             this.lblInterest = new System.Windows.Forms.Label();
             this.lblRepay = new System.Windows.Forms.Label();
-            this.nudPurchasePrice = new System.Windows.Forms.NumericUpDown();
-            this.nudDeposit = new System.Windows.Forms.NumericUpDown();
-            this.nudInterest = new System.Windows.Forms.NumericUpDown();
-            this.nudRepay = new System.Windows.Forms.NumericUpDown();
             this.redDisplay = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonthlyIncome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroceries)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWaterLights)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTravel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPhone)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudOtherEx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRentAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDeposit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInterest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRepay)).BeginInit();
+            this.udMonthlyIncome = new System.Windows.Forms.NumericUpDown();
+            this.udGroceries = new System.Windows.Forms.NumericUpDown();
+            this.udWaterLights = new System.Windows.Forms.NumericUpDown();
+            this.udTravel = new System.Windows.Forms.NumericUpDown();
+            this.udPhone = new System.Windows.Forms.NumericUpDown();
+            this.udOtherEx = new System.Windows.Forms.NumericUpDown();
+            this.udTax = new System.Windows.Forms.NumericUpDown();
+            this.udPurchasePrice = new System.Windows.Forms.NumericUpDown();
+            this.udRentAmount = new System.Windows.Forms.NumericUpDown();
+            this.udDeposit = new System.Windows.Forms.NumericUpDown();
+            this.udInterest = new System.Windows.Forms.NumericUpDown();
+            this.udRepayMonths = new System.Windows.Forms.NumericUpDown();
+            this.btnComplete = new System.Windows.Forms.Button();
+            this.btnClearExpenses = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnClearRent = new System.Windows.Forms.Button();
+            this.btnClearHomeLoan = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.udMonthlyIncome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udGroceries)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udWaterLights)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udTravel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOtherEx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udTax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPurchasePrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udRentAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udDeposit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udInterest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udRepayMonths)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -87,8 +92,9 @@ namespace PROG_POE_Part1_BudgetPlanner
             // 
             // btnCalculate
             // 
-            this.btnCalculate.BackColor = System.Drawing.Color.White;
-            this.btnCalculate.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnCalculate.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnCalculate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCalculate.ForeColor = System.Drawing.Color.White;
             this.btnCalculate.Location = new System.Drawing.Point(1525, 237);
             this.btnCalculate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCalculate.Name = "btnCalculate";
@@ -96,22 +102,8 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnCalculate.TabIndex = 1;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = false;
+            this.btnCalculate.Visible = false;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
-            // 
-            // nudMonthlyIncome
-            // 
-            this.nudMonthlyIncome.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudMonthlyIncome.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudMonthlyIncome.Location = new System.Drawing.Point(390, 246);
-            this.nudMonthlyIncome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudMonthlyIncome.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudMonthlyIncome.Name = "nudMonthlyIncome";
-            this.nudMonthlyIncome.Size = new System.Drawing.Size(180, 35);
-            this.nudMonthlyIncome.TabIndex = 2;
             // 
             // label2
             // 
@@ -136,81 +128,6 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.label3.Size = new System.Drawing.Size(483, 29);
             this.label3.TabIndex = 4;
             this.label3.Text = "Enter the following monthly expenditure amounts:";
-            // 
-            // nudGroceries
-            // 
-            this.nudGroceries.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudGroceries.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudGroceries.Location = new System.Drawing.Point(390, 383);
-            this.nudGroceries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudGroceries.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudGroceries.Name = "nudGroceries";
-            this.nudGroceries.Size = new System.Drawing.Size(180, 35);
-            this.nudGroceries.TabIndex = 5;
-            // 
-            // nudWaterLights
-            // 
-            this.nudWaterLights.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudWaterLights.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudWaterLights.Location = new System.Drawing.Point(390, 445);
-            this.nudWaterLights.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudWaterLights.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudWaterLights.Name = "nudWaterLights";
-            this.nudWaterLights.Size = new System.Drawing.Size(180, 35);
-            this.nudWaterLights.TabIndex = 6;
-            // 
-            // nudTravel
-            // 
-            this.nudTravel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudTravel.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudTravel.Location = new System.Drawing.Point(390, 514);
-            this.nudTravel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudTravel.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudTravel.Name = "nudTravel";
-            this.nudTravel.Size = new System.Drawing.Size(180, 35);
-            this.nudTravel.TabIndex = 7;
-            // 
-            // nudPhone
-            // 
-            this.nudPhone.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudPhone.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudPhone.Location = new System.Drawing.Point(390, 591);
-            this.nudPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudPhone.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudPhone.Name = "nudPhone";
-            this.nudPhone.Size = new System.Drawing.Size(180, 35);
-            this.nudPhone.TabIndex = 8;
-            // 
-            // nudOtherEx
-            // 
-            this.nudOtherEx.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudOtherEx.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudOtherEx.Location = new System.Drawing.Point(390, 656);
-            this.nudOtherEx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudOtherEx.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudOtherEx.Name = "nudOtherEx";
-            this.nudOtherEx.Size = new System.Drawing.Size(180, 35);
-            this.nudOtherEx.TabIndex = 9;
             // 
             // label4
             // 
@@ -291,21 +208,6 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.label9.TabIndex = 15;
             this.label9.Text = "Enter estimated monthly\r\ntax deducted: ";
             // 
-            // nudTax
-            // 
-            this.nudTax.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudTax.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudTax.Location = new System.Drawing.Point(975, 246);
-            this.nudTax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudTax.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudTax.Name = "nudTax";
-            this.nudTax.Size = new System.Drawing.Size(180, 35);
-            this.nudTax.TabIndex = 16;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -359,22 +261,6 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.lblEnter.Text = "Enter:";
             this.lblEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEnter.Visible = false;
-            // 
-            // nudRentAmount
-            // 
-            this.nudRentAmount.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudRentAmount.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudRentAmount.Location = new System.Drawing.Point(975, 445);
-            this.nudRentAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudRentAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudRentAmount.Name = "nudRentAmount";
-            this.nudRentAmount.Size = new System.Drawing.Size(180, 35);
-            this.nudRentAmount.TabIndex = 21;
-            this.nudRentAmount.Visible = false;
             // 
             // lblPurchasePrice
             // 
@@ -432,69 +318,311 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.lblRepay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRepay.Visible = false;
             // 
-            // nudPurchasePrice
-            // 
-            this.nudPurchasePrice.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudPurchasePrice.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudPurchasePrice.Location = new System.Drawing.Point(975, 447);
-            this.nudPurchasePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudPurchasePrice.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudPurchasePrice.Name = "nudPurchasePrice";
-            this.nudPurchasePrice.Size = new System.Drawing.Size(180, 35);
-            this.nudPurchasePrice.TabIndex = 26;
-            this.nudPurchasePrice.Visible = false;
-            // 
-            // nudDeposit
-            // 
-            this.nudDeposit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudDeposit.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudDeposit.Location = new System.Drawing.Point(975, 514);
-            this.nudDeposit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudDeposit.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudDeposit.Name = "nudDeposit";
-            this.nudDeposit.Size = new System.Drawing.Size(180, 35);
-            this.nudDeposit.TabIndex = 27;
-            this.nudDeposit.Visible = false;
-            // 
-            // nudInterest
-            // 
-            this.nudInterest.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudInterest.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudInterest.Location = new System.Drawing.Point(975, 591);
-            this.nudInterest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudInterest.Name = "nudInterest";
-            this.nudInterest.Size = new System.Drawing.Size(180, 35);
-            this.nudInterest.TabIndex = 28;
-            this.nudInterest.Visible = false;
-            // 
-            // nudRepay
-            // 
-            this.nudRepay.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nudRepay.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.nudRepay.Location = new System.Drawing.Point(975, 668);
-            this.nudRepay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nudRepay.Name = "nudRepay";
-            this.nudRepay.Size = new System.Drawing.Size(180, 35);
-            this.nudRepay.TabIndex = 29;
-            this.nudRepay.Visible = false;
-            // 
             // redDisplay
             // 
             this.redDisplay.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.redDisplay.ForeColor = System.Drawing.Color.IndianRed;
+            this.redDisplay.ForeColor = System.Drawing.Color.MidnightBlue;
             this.redDisplay.Location = new System.Drawing.Point(1398, 315);
             this.redDisplay.Name = "redDisplay";
             this.redDisplay.Size = new System.Drawing.Size(431, 634);
             this.redDisplay.TabIndex = 30;
             this.redDisplay.Text = "";
+            this.redDisplay.Visible = false;
+            // 
+            // udMonthlyIncome
+            // 
+            this.udMonthlyIncome.DecimalPlaces = 2;
+            this.udMonthlyIncome.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udMonthlyIncome.Location = new System.Drawing.Point(390, 239);
+            this.udMonthlyIncome.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.udMonthlyIncome.Name = "udMonthlyIncome";
+            this.udMonthlyIncome.Size = new System.Drawing.Size(180, 30);
+            this.udMonthlyIncome.TabIndex = 44;
+            this.udMonthlyIncome.ValueChanged += new System.EventHandler(this.udMonthlyIncome_ValueChanged);
+            // 
+            // udGroceries
+            // 
+            this.udGroceries.DecimalPlaces = 2;
+            this.udGroceries.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udGroceries.Location = new System.Drawing.Point(390, 387);
+            this.udGroceries.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
+            this.udGroceries.Name = "udGroceries";
+            this.udGroceries.Size = new System.Drawing.Size(180, 30);
+            this.udGroceries.TabIndex = 45;
+            this.udGroceries.ValueChanged += new System.EventHandler(this.udGroceries_ValueChanged);
+            // 
+            // udWaterLights
+            // 
+            this.udWaterLights.DecimalPlaces = 2;
+            this.udWaterLights.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udWaterLights.Location = new System.Drawing.Point(390, 447);
+            this.udWaterLights.Maximum = new decimal(new int[] {
+            -1063649280,
+            1831510949,
+            5,
+            0});
+            this.udWaterLights.Name = "udWaterLights";
+            this.udWaterLights.Size = new System.Drawing.Size(180, 30);
+            this.udWaterLights.TabIndex = 46;
+            this.udWaterLights.ValueChanged += new System.EventHandler(this.udWaterLights_ValueChanged);
+            // 
+            // udTravel
+            // 
+            this.udTravel.DecimalPlaces = 2;
+            this.udTravel.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udTravel.Location = new System.Drawing.Point(390, 521);
+            this.udTravel.Maximum = new decimal(new int[] {
+            -1063649280,
+            1831510949,
+            5,
+            0});
+            this.udTravel.Name = "udTravel";
+            this.udTravel.Size = new System.Drawing.Size(180, 30);
+            this.udTravel.TabIndex = 47;
+            this.udTravel.ValueChanged += new System.EventHandler(this.udTravel_ValueChanged);
+            // 
+            // udPhone
+            // 
+            this.udPhone.DecimalPlaces = 2;
+            this.udPhone.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udPhone.Location = new System.Drawing.Point(390, 598);
+            this.udPhone.Maximum = new decimal(new int[] {
+            -1063649280,
+            1831510949,
+            5,
+            0});
+            this.udPhone.Name = "udPhone";
+            this.udPhone.Size = new System.Drawing.Size(180, 30);
+            this.udPhone.TabIndex = 48;
+            this.udPhone.ValueChanged += new System.EventHandler(this.udPhone_ValueChanged);
+            // 
+            // udOtherEx
+            // 
+            this.udOtherEx.DecimalPlaces = 2;
+            this.udOtherEx.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udOtherEx.Location = new System.Drawing.Point(390, 660);
+            this.udOtherEx.Name = "udOtherEx";
+            this.udOtherEx.Size = new System.Drawing.Size(180, 30);
+            this.udOtherEx.TabIndex = 49;
+            this.udOtherEx.ValueChanged += new System.EventHandler(this.udOtherEx_ValueChanged);
+            // 
+            // udTax
+            // 
+            this.udTax.DecimalPlaces = 2;
+            this.udTax.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udTax.Location = new System.Drawing.Point(1056, 247);
+            this.udTax.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.udTax.Name = "udTax";
+            this.udTax.Size = new System.Drawing.Size(180, 30);
+            this.udTax.TabIndex = 50;
+            this.udTax.ValueChanged += new System.EventHandler(this.udTax_ValueChanged);
+            // 
+            // udPurchasePrice
+            // 
+            this.udPurchasePrice.DecimalPlaces = 2;
+            this.udPurchasePrice.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udPurchasePrice.Location = new System.Drawing.Point(1056, 446);
+            this.udPurchasePrice.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
+            this.udPurchasePrice.Name = "udPurchasePrice";
+            this.udPurchasePrice.Size = new System.Drawing.Size(180, 30);
+            this.udPurchasePrice.TabIndex = 51;
+            this.udPurchasePrice.Visible = false;
+            this.udPurchasePrice.ValueChanged += new System.EventHandler(this.udPurchasePrice_ValueChanged);
+            // 
+            // udRentAmount
+            // 
+            this.udRentAmount.DecimalPlaces = 2;
+            this.udRentAmount.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udRentAmount.Location = new System.Drawing.Point(1056, 452);
+            this.udRentAmount.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
+            this.udRentAmount.Name = "udRentAmount";
+            this.udRentAmount.Size = new System.Drawing.Size(180, 30);
+            this.udRentAmount.TabIndex = 52;
+            this.udRentAmount.Visible = false;
+            this.udRentAmount.ValueChanged += new System.EventHandler(this.udRentAmount_ValueChanged);
+            // 
+            // udDeposit
+            // 
+            this.udDeposit.DecimalPlaces = 2;
+            this.udDeposit.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.udDeposit.Location = new System.Drawing.Point(1056, 518);
+            this.udDeposit.Maximum = new decimal(new int[] {
+            1316134912,
+            2328,
+            0,
+            0});
+            this.udDeposit.Name = "udDeposit";
+            this.udDeposit.Size = new System.Drawing.Size(180, 30);
+            this.udDeposit.TabIndex = 53;
+            this.udDeposit.Visible = false;
+            this.udDeposit.ValueChanged += new System.EventHandler(this.udDeposit_ValueChanged);
+            // 
+            // udInterest
+            // 
+            this.udInterest.DecimalPlaces = 2;
+            this.udInterest.Location = new System.Drawing.Point(1056, 598);
+            this.udInterest.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
+            this.udInterest.Name = "udInterest";
+            this.udInterest.Size = new System.Drawing.Size(180, 30);
+            this.udInterest.TabIndex = 54;
+            this.udInterest.Visible = false;
+            this.udInterest.ValueChanged += new System.EventHandler(this.udInterest_ValueChanged);
+            // 
+            // udRepayMonths
+            // 
+            this.udRepayMonths.DecimalPlaces = 2;
+            this.udRepayMonths.Location = new System.Drawing.Point(1056, 689);
+            this.udRepayMonths.Maximum = new decimal(new int[] {
+            -1530494976,
+            232830,
+            0,
+            0});
+            this.udRepayMonths.Name = "udRepayMonths";
+            this.udRepayMonths.Size = new System.Drawing.Size(180, 30);
+            this.udRepayMonths.TabIndex = 55;
+            this.udRepayMonths.Value = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.udRepayMonths.Visible = false;
+            this.udRepayMonths.ValueChanged += new System.EventHandler(this.udRepayMonths_ValueChanged);
+            // 
+            // btnComplete
+            // 
+            this.btnComplete.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnComplete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnComplete.ForeColor = System.Drawing.Color.White;
+            this.btnComplete.Location = new System.Drawing.Point(1042, 901);
+            this.btnComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(194, 48);
+            this.btnComplete.TabIndex = 56;
+            this.btnComplete.Text = "Complete";
+            this.btnComplete.UseVisualStyleBackColor = false;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
+            // 
+            // btnClearExpenses
+            // 
+            this.btnClearExpenses.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnClearExpenses.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearExpenses.ForeColor = System.Drawing.Color.White;
+            this.btnClearExpenses.Location = new System.Drawing.Point(46, 751);
+            this.btnClearExpenses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClearExpenses.Name = "btnClearExpenses";
+            this.btnClearExpenses.Size = new System.Drawing.Size(224, 78);
+            this.btnClearExpenses.TabIndex = 57;
+            this.btnClearExpenses.Text = "CLEAR EXPENSE AMOUNTS";
+            this.btnClearExpenses.UseVisualStyleBackColor = false;
+            this.btnClearExpenses.Click += new System.EventHandler(this.btnClearExpenses_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnClear.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(381, 790);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(180, 91);
+            this.btnClear.TabIndex = 58;
+            this.btnClear.Text = "RESTART";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnClearRent
+            // 
+            this.btnClearRent.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnClearRent.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearRent.ForeColor = System.Drawing.Color.White;
+            this.btnClearRent.Location = new System.Drawing.Point(46, 841);
+            this.btnClearRent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClearRent.Name = "btnClearRent";
+            this.btnClearRent.Size = new System.Drawing.Size(224, 76);
+            this.btnClearRent.TabIndex = 59;
+            this.btnClearRent.Text = "CLEAR RENT AMOUNTS";
+            this.btnClearRent.UseVisualStyleBackColor = false;
+            this.btnClearRent.Visible = false;
+            this.btnClearRent.Click += new System.EventHandler(this.btnClearRent_Click);
+            // 
+            // btnClearHomeLoan
+            // 
+            this.btnClearHomeLoan.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnClearHomeLoan.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearHomeLoan.ForeColor = System.Drawing.Color.White;
+            this.btnClearHomeLoan.Location = new System.Drawing.Point(46, 841);
+            this.btnClearHomeLoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClearHomeLoan.Name = "btnClearHomeLoan";
+            this.btnClearHomeLoan.Size = new System.Drawing.Size(224, 76);
+            this.btnClearHomeLoan.TabIndex = 60;
+            this.btnClearHomeLoan.Text = "CLEAR PROPERTY AMOUNTS";
+            this.btnClearHomeLoan.UseVisualStyleBackColor = false;
+            this.btnClearHomeLoan.Visible = false;
+            this.btnClearHomeLoan.Click += new System.EventHandler(this.btnClearHomeLoan_Click);
             // 
             // frmBudgetPlanner
             // 
@@ -502,54 +630,58 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1924, 987);
+            this.Controls.Add(this.btnClearHomeLoan);
+            this.Controls.Add(this.btnClearRent);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnClearExpenses);
+            this.Controls.Add(this.btnComplete);
+            this.Controls.Add(this.udRepayMonths);
+            this.Controls.Add(this.udInterest);
+            this.Controls.Add(this.udDeposit);
+            this.Controls.Add(this.udRentAmount);
+            this.Controls.Add(this.udPurchasePrice);
+            this.Controls.Add(this.udTax);
+            this.Controls.Add(this.udOtherEx);
+            this.Controls.Add(this.udPhone);
+            this.Controls.Add(this.udTravel);
+            this.Controls.Add(this.udWaterLights);
+            this.Controls.Add(this.udGroceries);
+            this.Controls.Add(this.udMonthlyIncome);
             this.Controls.Add(this.redDisplay);
-            this.Controls.Add(this.nudRepay);
-            this.Controls.Add(this.nudInterest);
-            this.Controls.Add(this.nudDeposit);
-            this.Controls.Add(this.nudPurchasePrice);
             this.Controls.Add(this.lblRepay);
             this.Controls.Add(this.lblInterest);
             this.Controls.Add(this.lblDeposit);
             this.Controls.Add(this.lblPurchasePrice);
-            this.Controls.Add(this.nudRentAmount);
             this.Controls.Add(this.lblEnter);
             this.Controls.Add(this.lblRentAmount);
             this.Controls.Add(this.cmbChooseHousing);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.nudTax);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.nudOtherEx);
-            this.Controls.Add(this.nudPhone);
-            this.Controls.Add(this.nudTravel);
-            this.Controls.Add(this.nudWaterLights);
-            this.Controls.Add(this.nudGroceries);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.nudMonthlyIncome);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmBudgetPlanner";
-            this.Text = "Budget Planner";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonthlyIncome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGroceries)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWaterLights)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTravel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPhone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudOtherEx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRentAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPurchasePrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDeposit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInterest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRepay)).EndInit();
+            this.Text = " ";
+            ((System.ComponentModel.ISupportInitialize)(this.udMonthlyIncome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udGroceries)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udWaterLights)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udTravel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udOtherEx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udTax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPurchasePrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udRentAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udDeposit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udInterest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udRepayMonths)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,35 +691,40 @@ namespace PROG_POE_Part1_BudgetPlanner
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculate;
-        private System.Windows.Forms.NumericUpDown nudMonthlyIncome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudGroceries;
-        private System.Windows.Forms.NumericUpDown nudWaterLights;
-        private System.Windows.Forms.NumericUpDown nudTravel;
-        private System.Windows.Forms.NumericUpDown nudPhone;
-        private System.Windows.Forms.NumericUpDown nudOtherEx;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown nudTax;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbChooseHousing;
         private System.Windows.Forms.Label lblRentAmount;
         private System.Windows.Forms.Label lblEnter;
-        private System.Windows.Forms.NumericUpDown nudRentAmount;
         private System.Windows.Forms.Label lblPurchasePrice;
         private System.Windows.Forms.Label lblDeposit;
         private System.Windows.Forms.Label lblInterest;
         private System.Windows.Forms.Label lblRepay;
-        private System.Windows.Forms.NumericUpDown nudPurchasePrice;
-        private System.Windows.Forms.NumericUpDown nudDeposit;
-        private System.Windows.Forms.NumericUpDown nudInterest;
-        private System.Windows.Forms.NumericUpDown nudRepay;
         private System.Windows.Forms.RichTextBox redDisplay;
+        private System.Windows.Forms.NumericUpDown udMonthlyIncome;
+        private System.Windows.Forms.NumericUpDown udGroceries;
+        private System.Windows.Forms.NumericUpDown udWaterLights;
+        private System.Windows.Forms.NumericUpDown udTravel;
+        private System.Windows.Forms.NumericUpDown udPhone;
+        private System.Windows.Forms.NumericUpDown udOtherEx;
+        private System.Windows.Forms.NumericUpDown udTax;
+        private System.Windows.Forms.NumericUpDown udPurchasePrice;
+        private System.Windows.Forms.NumericUpDown udRentAmount;
+        private System.Windows.Forms.NumericUpDown udDeposit;
+        private System.Windows.Forms.NumericUpDown udInterest;
+        private System.Windows.Forms.NumericUpDown udRepayMonths;
+        private System.Windows.Forms.Button btnComplete;
+        private System.Windows.Forms.Button btnClearExpenses;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnClearRent;
+        private System.Windows.Forms.Button btnClearHomeLoan;
     }
 }
 

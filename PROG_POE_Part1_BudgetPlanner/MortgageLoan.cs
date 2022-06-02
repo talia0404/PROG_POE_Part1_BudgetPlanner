@@ -9,22 +9,22 @@ namespace PROG_POE_Part1_BudgetPlanner
     //inherits from Expense class
     class MortgageLoan :Expense
     {
-        public int RepaymentFull(int Deposit, int PurchasePrice, int Interest, int Months)
+        public double RepaymentFull(double Deposit, double PurchasePrice, double Interest, double Months)
         {
             //Calculating full home loan repayment
             //Formula: A=P*(1+i*n)
 
-            LoanRepaymentFull = (PurchasePrice -Deposit)* (1 + (Interest / 100) * (Months / 12));
+            LoanRepaymentFull = (PurchasePrice - Deposit)* ((1.00 + (Interest/100.00)) * (Months/12.00));
 
 
             return LoanRepaymentFull;
         }
-        public int MonthlyRepayment(int Deposit, int PurchasePrice, int Interest, int Months)
+        public double MonthlyRepayment(double Deposit, double PurchasePrice, double Interest, double Months)
         {
             //Calculating monthly home loan repayment
             //Formula: A=P*(1+i*n)
 
-            LoanRepayment = (PurchasePrice - Deposit) * (1 + (Interest / 100) * (Months / 12)/Months);
+            LoanRepayment = ((PurchasePrice - Deposit) *( (1.00 + (Interest / 100.00) )* (Months / 12.00)))/Months;
 
             return LoanRepayment;
         }

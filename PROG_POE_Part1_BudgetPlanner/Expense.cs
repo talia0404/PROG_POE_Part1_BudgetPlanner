@@ -10,8 +10,8 @@ namespace PROG_POE_Part1_BudgetPlanner
     abstract class Expense
     {
        //declare field
-        private int loanRepayment;
-        private int loanRepaymentFull;
+        private double loanRepayment;
+        private double loanRepaymentFull;
 
         //empty constrcutor
         public Expense()
@@ -19,7 +19,7 @@ namespace PROG_POE_Part1_BudgetPlanner
 
         }
 
-        protected Expense(int loanRepayment, int loanRepaymentFull)
+        protected Expense(double loanRepayment, double loanRepaymentFull)
         {
             this.loanRepayment = loanRepayment;
             this.loanRepaymentFull = loanRepaymentFull;
@@ -28,7 +28,7 @@ namespace PROG_POE_Part1_BudgetPlanner
 
 
         //set and get methods
-        public int LoanRepayment { get => loanRepayment; set => loanRepayment = value; }
-        public int LoanRepaymentFull { get => loanRepaymentFull; set => loanRepaymentFull = value; }
+        public double LoanRepayment { get => loanRepayment; set => loanRepayment = value; }
+        public double LoanRepaymentFull { get => loanRepaymentFull; set => loanRepaymentFull = value; }
     }
 }
