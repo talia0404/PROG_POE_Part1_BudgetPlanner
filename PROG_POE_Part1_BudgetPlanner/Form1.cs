@@ -20,7 +20,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             InitializeComponent();
         }
 
-       //Makes correct components relevant to choice chosen in the comcobox appear/dissapear
+        //Makes correct components relevant to choice chosen in the comcobox appear/dissapear
         private void cmbChooseHousing_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Displays input components if the Rent option is chosen
@@ -32,7 +32,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                 udRentAmount.Visible = true;
                 btnClearRent.Visible = true;
                 btnComplete.Visible = true;
-               
+
                 //Makes relevent components invisible
                 lblPurchasePrice.Visible = false;
                 udPurchasePrice.Visible = false;
@@ -63,7 +63,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                     udRepayMonths.Visible = true;
                     btnComplete.Visible = true;
 
-                   //Makes relevant components invisible
+                    //Makes relevant components invisible
                     lblRentAmount.Visible = false;
                     udRentAmount.Visible = false;
                     btnCalculate.Visible = false;
@@ -72,56 +72,75 @@ namespace PROG_POE_Part1_BudgetPlanner
             }
         }
 
+        //Method to make display components invisible so input can be validated before calculated
+        private void InvisibleDisplay()
+        {
+            //Makes display components invisible so input can be validated before calculated
+            btnCalculate.Visible = false;
+            redDisplay.Visible = false;
+
+        }
+
         //Validation button
         //Ensures that all input values are logical and have the correct inputs
         private void btnComplete_Click(object sender, EventArgs e)
         {
+           
             //Ensures that valid housing option is given
             if ((cmbChooseHousing.SelectedItem != "Renting.") && (cmbChooseHousing.SelectedItem != "Buying a property."))
             {
                 //Displays error message to user if input is inavalid 
                 MessageBox.Show("Please choose valid housing option.");
 
-                //Makes display components false so that user can correct incorrect inputs before calculating amounts
-                btnCalculate.Visible = false;
-                redDisplay.Visible = false; 
+                //Calls method to make components invisible so input can be validated before calculated
+                InvisibleDisplay();
             }
-                else
+            else
 
-               {
+            {
                 //Ensures that user can calculate amounts if correct value is given
-                    btnCalculate.Visible = true;
-                    redDisplay.Visible = true;
-                }
+                btnCalculate.Visible = true;
+                redDisplay.Visible = true;
+            }
 
             //Ensures that property values are valid if buying a property is chosen
             if (cmbChooseHousing.SelectedItem == "Buying a property.")
             {
-                //
+                //Ensures that user will not be able to enter a deposit value that is equal to or higher than the purchase price
                 if (udDeposit.Value >= udPurchasePrice.Value)
                 {
-                    btnCalculate.Visible = false;
-                    redDisplay.Visible = false;
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
+
+                    //Error message informs user to input valid deposit amount
                     MessageBox.Show("Deposit amount cannot be higher or equal to than the purchase price." +
                         "\nPlease enter valid amount.");
-                
+
 
                 }
 
+                //Ensures user enters valid interest value
                 if (udInterest.Value > 100)
                 {
-                    btnCalculate.Visible = false;
-                    redDisplay.Visible = false;
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
+
+                    //Error message informs user to input valid interest rate
                     MessageBox.Show("Interest rate cannot be higher than 100." +
                         "\nPlease enter valid rate.");
+
+                    //Resets numericupDown value to 0
                     udInterest.Value = 0;
 
                 }
 
-                if ((udRepayMonths.Value<240) || (udRepayMonths.Value>360))
+                //Ensures repayment months input number is valid- between 240 and 360
+                if ((udRepayMonths.Value < 240) || (udRepayMonths.Value > 360))
                 {
-                    btnCalculate.Visible = false;
-                    redDisplay.Visible = false;
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
+
+                    //Error message to inform user to enter correct number of months
                     MessageBox.Show("Invaldid number of months entered." +
                         "\nPlease input valid number of months - between 240 and 360.");
                 }
@@ -131,6 +150,100 @@ namespace PROG_POE_Part1_BudgetPlanner
 
 
 
+        }
+
+        //Method created to make display components invisible so input can be validated before calculated
+        //Makes validation button visible so inputs can be calculated
+        private void udVisible()
+        {
+            btnCalculate.Visible = false;
+            redDisplay.Visible = false;
+            btnComplete.Visible = true;
+        }
+
+        private void udMonthlyIncome_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+              when numericUpDown value is changed */ 
+            udVisible();
+        }
+
+        private void udGroceries_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udWaterLights_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udTravel_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+
+        }
+
+        private void udPhone_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udOtherEx_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udTax_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udPurchasePrice_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udRentAmount_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udDeposit_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udInterest_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udRepayMonths_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+             when numericUpDown value is changed */
+            udVisible();
         }
 
         //Code in calculate and display button
@@ -187,14 +300,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Calculates the monthly available money
             monthlyAvailableMoney = grossIncome - (sum);
 
-            //calculate a third of this months income
-            double third = grossIncome * (1.00/3.00);
-
-            //alerts user that home loan may not be approved 
-            if (monthlyRepaymentValue > third)
-            {
-                MessageBox.Show("Sorry, approval of the home loan looks unlikely.");
-            }
+            
 
             //Displays relevant values if rent option is chosen
             if (cmbChooseHousing.SelectedItem == "Renting.")
@@ -204,55 +310,62 @@ namespace PROG_POE_Part1_BudgetPlanner
                 monthlyAvailableMoney = grossIncome - (sum);
 
                 //Displays gross income, rent amount, total expenses, monthly available amount
-                    redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
-                    "\n\nYou have chosen to rent a living space. Your monthly rent will be: R" +
-                  
-                    Convert.ToString(rent) +
-                    "\n\nYour total expenses for the month excluding the rent expense is: R" +
-                           
-                    Convert.ToString(sum) +
-                    "\n\nYour total expenses for the month incuding the rent expense is: R" +
-                           
-                    Convert.ToString(sum + rent) +
-                    "\n\nAvailable amount before deducting the rent expense is: R" +
-                    
-                    Convert.ToString(monthlyAvailableMoney) +
-                    "\n\nAvailable amount after deducting the rent expense is: R" +
-                    
-                    Convert.ToString(monthlyAvailableMoney - rent);
+                redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
+                "\n\nYou have chosen to rent a living space. Your monthly rent will be: R" +
+
+                Convert.ToString(rent) +
+                "\n\nYour total expenses for the month excluding the rent expense is: R" +
+
+                Convert.ToString(sum) +
+                "\n\nYour total expenses for the month incuding the rent expense is: R" +
+
+                Convert.ToString(sum + rent) +
+                "\n\nAvailable amount before deducting the rent expense is: R" +
+
+                Convert.ToString(monthlyAvailableMoney) +
+                "\n\nAvailable amount after deducting the rent expense is: R" +
+
+                Convert.ToString(monthlyAvailableMoney - rent);
 
             }
-              else
+            else
             {
-                 if (cmbChooseHousing.SelectedItem == "Buying a Property.")
-                 {
+                if (cmbChooseHousing.SelectedItem == "Buying a Property.")
+                {
+                    //calculate a third of this months income
+                    double third = grossIncome * (1.00 / 3.00);
 
+                    //alerts user that home loan may not be approved 
+                    if (monthlyRepaymentValue > third)
+                    {
+                        MessageBox.Show("Sorry, approval of the home loan looks unlikely.");
+                    }
 
                     //Displays income, total expenses, monthly available amount, monthly repayment amaount, monthly repayment amount deducted from monthly available amount
-                        redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
-                        "\n\nYou have chosen to buy a property. Your monthly home loan repayment amount is: R" +
-                       
-                        Convert.ToString(monthlyRepaymentValue) + " and is likely to be approved." +
-                        "\n\nYour total expenses for the month excluding the home loan repayment is: R" +
-                        
-                        Convert.ToString(sum) +
-                        "\n\nYour total expenses for the month including the home loan repayment is: R" +
-                      
-                        Convert.ToString(sum + monthlyRepaymentValue) +
-                        "\n\nAvailable amount before deducting the home repayment is: R" +
-                      
-                        Convert.ToString(monthlyAvailableMoney) +
-                        "\n\nAvailable amount after deducting the home repayment is: R" +
-                       
-                        Convert.ToString(monthlyAvailableMoney - monthlyRepaymentValue)
-                        ;
+                    redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
+                    "\n\nYou have chosen to buy a property. Your monthly home loan repayment amount is: R" +
 
-                    
+                    Convert.ToString(monthlyRepaymentValue) + " and is likely to be approved." +
+                    "\n\nYour total expenses for the month excluding the home loan repayment is: R" +
+
+                    Convert.ToString(sum) +
+                    "\n\nYour total expenses for the month including the home loan repayment is: R" +
+
+                    Convert.ToString(sum + monthlyRepaymentValue) +
+                    "\n\nAvailable amount before deducting the home repayment is: R" +
+
+                    Convert.ToString(monthlyAvailableMoney) +
+                    "\n\nAvailable amount after deducting the home repayment is: R" +
+
+                    Convert.ToString(monthlyAvailableMoney - monthlyRepaymentValue)
+                    ;
+
+
 
                 }
 
             }
-            }
+        }
 
         //Clears all monthly expenditure values
         private void btnClearExpenses_Click(object sender, EventArgs e)
@@ -320,76 +433,6 @@ namespace PROG_POE_Part1_BudgetPlanner
 
 
         }
-
-        private void udVisible()
-        {
-            btnCalculate.Visible = false;
-            redDisplay.Visible = false;
-            btnComplete.Visible = true;
-        }
-
-        private void udMonthlyIncome_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udGroceries_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udWaterLights_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udTravel_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-
-        }
-
-        private void udPhone_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udOtherEx_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udTax_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udPurchasePrice_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udRentAmount_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udDeposit_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udInterest_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-        private void udRepayMonths_ValueChanged(object sender, EventArgs e)
-        {
-            udVisible();
-        }
-
-
 
 
 
