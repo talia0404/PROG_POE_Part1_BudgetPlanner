@@ -44,6 +44,9 @@ namespace PROG_POE_Part1_BudgetPlanner
                 udRepayMonths.Visible = false;
                 btnCalculate.Visible = false;
                 redDisplay.Visible = false;
+                
+                //Output component will remain clear
+                redDisplay.Clear();
             }
             else
             {
@@ -68,6 +71,9 @@ namespace PROG_POE_Part1_BudgetPlanner
                     udRentAmount.Visible = false;
                     btnCalculate.Visible = false;
                     redDisplay.Visible = false;
+
+                    //Output component will remain clear
+                    redDisplay.Clear();
                 }
             }
         }
@@ -78,6 +84,8 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Makes display components invisible so input can be validated before calculated
             btnCalculate.Visible = false;
             redDisplay.Visible = false;
+            //Output component will remain clear
+            redDisplay.Clear();
 
         }
 
@@ -106,7 +114,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Ensures that property values are valid if buying a property is chosen
             if (cmbChooseHousing.SelectedItem == "Buying a property.")
             {
-                //Ensures that user will not be able to enter a deposit value that is equal to or higher than the purchase price
+                //Ensures that user will not be able to enter a deposit value that is equal to or higher than the purchase price for housing option
                 if (udDeposit.Value >= udPurchasePrice.Value)
                 {
                     //Calls method to make components invisible so input can be validated before calculated
@@ -116,10 +124,9 @@ namespace PROG_POE_Part1_BudgetPlanner
                     MessageBox.Show("Deposit amount cannot be higher or equal to than the purchase price." +
                         "\nPlease enter valid amount.");
 
-
                 }
 
-                //Ensures user enters valid interest value
+                //Ensures user enters valid interest value for housing option
                 if (udInterest.Value > 100)
                 {
                     //Calls method to make components invisible so input can be validated before calculated
@@ -134,7 +141,24 @@ namespace PROG_POE_Part1_BudgetPlanner
 
                 }
 
-                //Ensures repayment months input number is valid- between 240 and 360
+                //Ensures that valid vehicle option is given
+                if ((cmbVehicleChoice.SelectedItem != "Yes.") && (cmbVehicleChoice.SelectedItem != "No."))
+                {
+                    //Displays error message to user if input is inavalid 
+                    MessageBox.Show("Please choose valid option.");
+
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
+                }
+                else
+
+                {
+                    //Ensures that user can calculate amounts if correct value is given
+                    btnCalculate.Visible = true;
+                    redDisplay.Visible = true;
+                }
+
+                //Ensures repayment months input number is valid- between 240 and 360 for housing option
                 if ((udRepayMonths.Value < 240) || (udRepayMonths.Value > 360))
                 {
                     //Calls method to make components invisible so input can be validated before calculated
@@ -146,9 +170,36 @@ namespace PROG_POE_Part1_BudgetPlanner
                 }
 
             }
+           
+            //Validating vehicle related input amounts if user chooses to buy vehicle
+            if (cmbVehicleChoice.SelectedItem == "Yes.")
+            {
+                //Ensures that user will not be able to enter a deposit value that is equal to or higher than the purchase price for vehicle option
+                if (udVDeposit.Value > udVPurchasePrice.Value)
+                {
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
 
+                    //Error message informs user to input valid deposit amount
+                    MessageBox.Show("Deposit amount cannot be higher or equal to than the purchase price." +
+                        "\nPlease enter valid amount.");
+                }
 
+                //Ensures user enters valid interest value for vehicle option
+                if (udVRate.Value > 100)
+                {
+                    //Calls method to make components invisible so input can be validated before calculated
+                    InvisibleDisplay();
 
+                    //Error message informs user to input valid interest rate
+                    MessageBox.Show("Interest rate cannot be higher than 100." +
+                        "\nPlease enter valid rate.");
+
+                    //Resets numericupDown value to 0
+                    udVRate.Value = 0;
+                }
+
+            }
 
         }
 
@@ -159,6 +210,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             btnCalculate.Visible = false;
             redDisplay.Visible = false;
             btnComplete.Visible = true;
+            redDisplay.Clear();
         }
 
         private void udMonthlyIncome_ValueChanged(object sender, EventArgs e)
@@ -255,7 +307,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Clears the richTextBox everytime the button is clicked
             redDisplay.Clear();
 
-            //Ceclare variables and assign input values to them
+            //Declares variables and assigns expense related input values to them 
             //Converts input values to prefered datatype: double/real
             double grossIncome = decimal.ToDouble(udMonthlyIncome.Value);
             double groceries = decimal.ToDouble(udGroceries.Value);
@@ -264,14 +316,46 @@ namespace PROG_POE_Part1_BudgetPlanner
             double phone = decimal.ToDouble(udPhone.Value);
             double other = decimal.ToDouble(udOtherEx.Value);
             double tax = decimal.ToDouble(udTax.Value);
+
+            //Declares variables and assigns expense/rent irelated nput values to them 
+            //Converts input values to prefered datatype: double/real
             double rent = decimal.ToDouble(udRentAmount.Value);
+
+            //Declares variables and assigns property buying related input values to them 
+            //Converts input values to prefered datatype: double/real
             double purchasePrice = decimal.ToDouble(udPurchasePrice.Value);
             double totaldeposit = decimal.ToDouble(udDeposit.Value);
             double interest = decimal.ToDouble(udInterest.Value);
             double repay = decimal.ToDouble(udRepayMonths.Value);
+
+            //Declares variables and assigns input values to them 
+            //Converts input values to prefered datatype: double/real
+            //Stores full repayment value
             double RepaymentValue = 0.00;
+
+            //Stores monthly repayment value
             double monthlyRepaymentValue = 0.00;
+
+            //Stores monthly left over money after deducting expenses and repayment amounts
             double monthlyAvailableMoney = 0.00;
+
+            //Declares variables and assigns vehicle related input values to them 
+            string vModel = tbxModel.Text;
+            string make = tbxMake.Text;
+
+            //Converts input values to prefered datatype: double/real
+            double vPurchasePrice = decimal.ToDouble(udVPurchasePrice.Value);
+            double vDeposit = decimal.ToDouble(udVDeposit.Value);
+            double vRate = decimal.ToDouble(udVRate.Value);
+            double Premium = decimal.ToDouble(udPremium.Value);
+
+            //Stores total Monthly Vehicle Repayment Cost
+            double totalMonthlyVehicleRepaymentCost = 0.00;
+
+
+
+
+
 
             //declaing and populating expense array - datatype double
             //populates array with 7 values- the variables used to hold expense values
@@ -279,12 +363,10 @@ namespace PROG_POE_Part1_BudgetPlanner
                 {groceries, water,travel,phone,other,tax,totaldeposit};
 
             //Calculating sum of expense array
-            int sum = 0;
-            for (int i = 0; i < arrExpenses.Length; i++)
-            {
-                //converts final sum to integer datatype
-                sum = Convert.ToInt32(arrExpenses[i]);
-            }
+            double sum = 0;
+            Array.ForEach(arrExpenses, i => sum += i);
+
+            Console.WriteLine(sum);
 
             //Creating an instance of the MortgageLoan class 
             MortgageLoan mL = new MortgageLoan();
@@ -365,6 +447,16 @@ namespace PROG_POE_Part1_BudgetPlanner
                 }
 
             }
+
+            //Creating an instance of the VehicleCalculation class
+            VehicleCalculation vc = new VehicleCalculation();
+
+            totalMonthlyVehicleRepaymentCost = vc.monthlyVehicleCost(vDeposit, vPurchasePrice, vRate, Premium);
+
+            if(cmbVehicleChoice.SelectedItem == "Yes.")
+            {
+                MessageBox.Show(Convert.ToString(totalMonthlyVehicleRepaymentCost));
+            }
         }
 
         //Clears all monthly expenditure values
@@ -432,6 +524,58 @@ namespace PROG_POE_Part1_BudgetPlanner
             udRepayMonths.Visible = false;
 
 
+        }
+
+        //Part 2
+
+        private void cmbVehicleChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVehicleChoice.SelectedItem == "Yes.")
+            {
+                lblEnter2.Visible = true;
+                lblModel.Visible = true;
+                tbxModel.Visible = true;
+                lblMake.Visible = true;
+                tbxMake.Visible = true;
+                lblVPurchasePrice.Visible = true;
+                udVPurchasePrice.Visible = true;
+                lblVDeposit.Visible = true;
+                udVDeposit.Visible = true;
+                lblVInterestRate.Visible = true;
+                udVRate.Visible = true;
+                lblPremium.Visible = true;
+                udPremium.Visible = true;
+
+                udVisible();
+
+            }
+            else
+            {
+                if (cmbVehicleChoice.SelectedItem == "No.")
+                {
+                    lblEnter2.Visible = false;
+                    lblModel.Visible = false;
+                    tbxModel.Visible = false;
+                    lblMake.Visible = false;
+                    tbxMake.Visible = false;
+                    lblVPurchasePrice.Visible = false;
+                    udVPurchasePrice.Visible = false;
+                    lblVDeposit.Visible = false;
+                    udVDeposit.Visible = false;
+                    lblVInterestRate.Visible = false;
+                    udVRate.Visible = false;
+                    lblPremium.Visible = false;
+                    udPremium.Visible = false;
+
+                    tbxModel.Text="";
+                    tbxMake.Text = "";
+                    udVPurchasePrice.Value = 0;
+                    udVDeposit.Value = 0;
+                    udVRate.Value = 0;
+                    udPremium.Value = 0;
+
+                }
+            }
         }
 
 

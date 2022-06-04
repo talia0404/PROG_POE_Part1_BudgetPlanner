@@ -12,6 +12,7 @@ namespace PROG_POE_Part1_BudgetPlanner
        //declare field
         private double loanRepayment;
         private double loanRepaymentFull;
+        private double vehicleTotalCost;
 
         //empty constrcutor
         public Expense()
@@ -23,12 +24,13 @@ namespace PROG_POE_Part1_BudgetPlanner
         {
             this.loanRepayment = loanRepayment;
             this.loanRepaymentFull = loanRepaymentFull;
+            this.vehicleTotalCost = vehicleTotalCost;
         }
-
-
 
         //set and get methods
         public double LoanRepayment { get => loanRepayment; set => loanRepayment = value; }
         public double LoanRepaymentFull { get => loanRepaymentFull; set => loanRepaymentFull = value; }
+        public double VehicleTotalCost { get => vehicleTotalCost; set => vehicleTotalCost = value; }
+
     }
 }

@@ -67,19 +67,19 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnClearHomeLoan = new System.Windows.Forms.Button();
             this.cmbVehicleChoice = new System.Windows.Forms.ComboBox();
             this.lblVehicleChoice = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.lblEnter2 = new System.Windows.Forms.Label();
+            this.udVPurchasePrice = new System.Windows.Forms.NumericUpDown();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.tbxModel = new System.Windows.Forms.TextBox();
+            this.tbxMake = new System.Windows.Forms.TextBox();
+            this.lblMake = new System.Windows.Forms.Label();
+            this.lblVPurchasePrice = new System.Windows.Forms.Label();
+            this.lblVDeposit = new System.Windows.Forms.Label();
+            this.udVDeposit = new System.Windows.Forms.NumericUpDown();
+            this.lblVInterestRate = new System.Windows.Forms.Label();
+            this.udVRate = new System.Windows.Forms.NumericUpDown();
+            this.lblPremium = new System.Windows.Forms.Label();
+            this.udPremium = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.udMonthlyIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udGroceries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udWaterLights)).BeginInit();
@@ -92,10 +92,10 @@ namespace PROG_POE_Part1_BudgetPlanner
             ((System.ComponentModel.ISupportInitialize)(this.udDeposit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udInterest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRepayMonths)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVPurchasePrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVDeposit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPremium)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -654,6 +654,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.cmbVehicleChoice.Name = "cmbVehicleChoice";
             this.cmbVehicleChoice.Size = new System.Drawing.Size(180, 37);
             this.cmbVehicleChoice.TabIndex = 62;
+            this.cmbVehicleChoice.SelectedIndexChanged += new System.EventHandler(this.cmbVehicleChoice_SelectedIndexChanged);
             // 
             // lblVehicleChoice
             // 
@@ -668,193 +669,195 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.lblVehicleChoice.Text = "Buy a vehicle?";
             this.lblVehicleChoice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // lblEnter2
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label11.Location = new System.Drawing.Point(87, 780);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 29);
-            this.label11.TabIndex = 63;
-            this.label11.Text = "Enter:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label11.Visible = false;
+            this.lblEnter2.AutoSize = true;
+            this.lblEnter2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblEnter2.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblEnter2.Location = new System.Drawing.Point(87, 780);
+            this.lblEnter2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEnter2.Name = "lblEnter2";
+            this.lblEnter2.Size = new System.Drawing.Size(71, 29);
+            this.lblEnter2.TabIndex = 63;
+            this.lblEnter2.Text = "Enter:";
+            this.lblEnter2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEnter2.Visible = false;
             // 
-            // numericUpDown1
+            // udVPurchasePrice
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.udVPurchasePrice.DecimalPlaces = 2;
+            this.udVPurchasePrice.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(278, 909);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.udVPurchasePrice.Location = new System.Drawing.Point(278, 909);
+            this.udVPurchasePrice.Maximum = new decimal(new int[] {
             1316134912,
             2328,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(198, 30);
-            this.numericUpDown1.TabIndex = 65;
-            this.numericUpDown1.Visible = false;
+            this.udVPurchasePrice.Name = "udVPurchasePrice";
+            this.udVPurchasePrice.Size = new System.Drawing.Size(198, 30);
+            this.udVPurchasePrice.TabIndex = 65;
+            this.udVPurchasePrice.Visible = false;
             // 
-            // label12
+            // lblModel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label12.Location = new System.Drawing.Point(87, 814);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 29);
-            this.label12.TabIndex = 64;
-            this.label12.Text = "Model:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label12.Visible = false;
+            this.lblModel.AutoSize = true;
+            this.lblModel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblModel.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblModel.Location = new System.Drawing.Point(87, 814);
+            this.lblModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(76, 29);
+            this.lblModel.TabIndex = 64;
+            this.lblModel.Text = "Model:";
+            this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblModel.Visible = false;
             // 
-            // textBox1
+            // tbxModel
             // 
-            this.textBox1.Location = new System.Drawing.Point(278, 813);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 30);
-            this.textBox1.TabIndex = 66;
+            this.tbxModel.Location = new System.Drawing.Point(278, 813);
+            this.tbxModel.Name = "tbxModel";
+            this.tbxModel.Size = new System.Drawing.Size(198, 30);
+            this.tbxModel.TabIndex = 66;
+            this.tbxModel.Visible = false;
             // 
-            // textBox2
+            // tbxMake
             // 
-            this.textBox2.Location = new System.Drawing.Point(278, 861);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 30);
-            this.textBox2.TabIndex = 68;
+            this.tbxMake.Location = new System.Drawing.Point(278, 861);
+            this.tbxMake.Name = "tbxMake";
+            this.tbxMake.Size = new System.Drawing.Size(198, 30);
+            this.tbxMake.TabIndex = 68;
+            this.tbxMake.Visible = false;
             // 
-            // label13
+            // lblMake
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label13.Location = new System.Drawing.Point(87, 860);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 29);
-            this.label13.TabIndex = 67;
-            this.label13.Text = "Make:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label13.Visible = false;
+            this.lblMake.AutoSize = true;
+            this.lblMake.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMake.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblMake.Location = new System.Drawing.Point(87, 860);
+            this.lblMake.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMake.Name = "lblMake";
+            this.lblMake.Size = new System.Drawing.Size(69, 29);
+            this.lblMake.TabIndex = 67;
+            this.lblMake.Text = "Make:";
+            this.lblMake.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMake.Visible = false;
             // 
-            // label14
+            // lblVPurchasePrice
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label14.Location = new System.Drawing.Point(89, 907);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(161, 29);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "Purchase price:";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label14.Visible = false;
+            this.lblVPurchasePrice.AutoSize = true;
+            this.lblVPurchasePrice.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblVPurchasePrice.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblVPurchasePrice.Location = new System.Drawing.Point(89, 907);
+            this.lblVPurchasePrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVPurchasePrice.Name = "lblVPurchasePrice";
+            this.lblVPurchasePrice.Size = new System.Drawing.Size(161, 29);
+            this.lblVPurchasePrice.TabIndex = 69;
+            this.lblVPurchasePrice.Text = "Purchase price:";
+            this.lblVPurchasePrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVPurchasePrice.Visible = false;
             // 
-            // label15
+            // lblVDeposit
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label15.Location = new System.Drawing.Point(530, 812);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(161, 29);
-            this.label15.TabIndex = 71;
-            this.label15.Text = "Purchase price:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label15.Visible = false;
+            this.lblVDeposit.AutoSize = true;
+            this.lblVDeposit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblVDeposit.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblVDeposit.Location = new System.Drawing.Point(530, 812);
+            this.lblVDeposit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVDeposit.Name = "lblVDeposit";
+            this.lblVDeposit.Size = new System.Drawing.Size(92, 29);
+            this.lblVDeposit.TabIndex = 71;
+            this.lblVDeposit.Text = "Deposit:";
+            this.lblVDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVDeposit.Visible = false;
             // 
-            // numericUpDown2
+            // udVDeposit
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Increment = new decimal(new int[] {
+            this.udVDeposit.DecimalPlaces = 2;
+            this.udVDeposit.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(719, 814);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.udVDeposit.Location = new System.Drawing.Point(753, 812);
+            this.udVDeposit.Maximum = new decimal(new int[] {
             1316134912,
             2328,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(198, 30);
-            this.numericUpDown2.TabIndex = 70;
-            this.numericUpDown2.Visible = false;
+            this.udVDeposit.Name = "udVDeposit";
+            this.udVDeposit.Size = new System.Drawing.Size(198, 30);
+            this.udVDeposit.TabIndex = 70;
+            this.udVDeposit.Visible = false;
             // 
-            // label16
+            // lblVInterestRate
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label16.Location = new System.Drawing.Point(530, 862);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(161, 29);
-            this.label16.TabIndex = 73;
-            this.label16.Text = "Purchase price:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label16.Visible = false;
+            this.lblVInterestRate.AutoSize = true;
+            this.lblVInterestRate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblVInterestRate.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblVInterestRate.Location = new System.Drawing.Point(530, 862);
+            this.lblVInterestRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVInterestRate.Name = "lblVInterestRate";
+            this.lblVInterestRate.Size = new System.Drawing.Size(134, 29);
+            this.lblVInterestRate.TabIndex = 73;
+            this.lblVInterestRate.Text = "Interest rate:";
+            this.lblVInterestRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVInterestRate.Visible = false;
             // 
-            // numericUpDown3
+            // udVRate
             // 
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Increment = new decimal(new int[] {
+            this.udVRate.DecimalPlaces = 2;
+            this.udVRate.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown3.Location = new System.Drawing.Point(718, 861);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.udVRate.Location = new System.Drawing.Point(753, 859);
+            this.udVRate.Maximum = new decimal(new int[] {
             1316134912,
             2328,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(198, 30);
-            this.numericUpDown3.TabIndex = 72;
-            this.numericUpDown3.Visible = false;
+            this.udVRate.Name = "udVRate";
+            this.udVRate.Size = new System.Drawing.Size(198, 30);
+            this.udVRate.TabIndex = 72;
+            this.udVRate.Visible = false;
             // 
-            // label17
+            // lblPremium
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.label17.Location = new System.Drawing.Point(530, 907);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(161, 29);
-            this.label17.TabIndex = 75;
-            this.label17.Text = "Purchase price:";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label17.Visible = false;
+            this.lblPremium.AutoSize = true;
+            this.lblPremium.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPremium.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.lblPremium.Location = new System.Drawing.Point(530, 907);
+            this.lblPremium.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPremium.Name = "lblPremium";
+            this.lblPremium.Size = new System.Drawing.Size(204, 29);
+            this.lblPremium.TabIndex = 75;
+            this.lblPremium.Text = "Estimated premium:";
+            this.lblPremium.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPremium.Visible = false;
             // 
-            // numericUpDown4
+            // udPremium
             // 
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Increment = new decimal(new int[] {
+            this.udPremium.DecimalPlaces = 2;
+            this.udPremium.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.numericUpDown4.Location = new System.Drawing.Point(719, 909);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.udPremium.Location = new System.Drawing.Point(753, 909);
+            this.udPremium.Maximum = new decimal(new int[] {
             1316134912,
             2328,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(198, 30);
-            this.numericUpDown4.TabIndex = 74;
-            this.numericUpDown4.Visible = false;
+            this.udPremium.Name = "udPremium";
+            this.udPremium.Size = new System.Drawing.Size(198, 30);
+            this.udPremium.TabIndex = 74;
+            this.udPremium.Visible = false;
             // 
             // frmBudgetPlanner
             // 
@@ -862,19 +865,19 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1924, 987);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblPremium);
+            this.Controls.Add(this.udPremium);
+            this.Controls.Add(this.lblVInterestRate);
+            this.Controls.Add(this.udVRate);
+            this.Controls.Add(this.lblVDeposit);
+            this.Controls.Add(this.udVDeposit);
+            this.Controls.Add(this.lblVPurchasePrice);
+            this.Controls.Add(this.tbxMake);
+            this.Controls.Add(this.lblMake);
+            this.Controls.Add(this.tbxModel);
+            this.Controls.Add(this.udVPurchasePrice);
+            this.Controls.Add(this.lblModel);
+            this.Controls.Add(this.lblEnter2);
             this.Controls.Add(this.cmbVehicleChoice);
             this.Controls.Add(this.lblVehicleChoice);
             this.Controls.Add(this.btnClearHomeLoan);
@@ -929,10 +932,10 @@ namespace PROG_POE_Part1_BudgetPlanner
             ((System.ComponentModel.ISupportInitialize)(this.udDeposit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udInterest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRepayMonths)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVPurchasePrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVDeposit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udVRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udPremium)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -978,19 +981,19 @@ namespace PROG_POE_Part1_BudgetPlanner
         private System.Windows.Forms.Button btnClearHomeLoan;
         private System.Windows.Forms.ComboBox cmbVehicleChoice;
         private System.Windows.Forms.Label lblVehicleChoice;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label lblEnter2;
+        private System.Windows.Forms.NumericUpDown udVPurchasePrice;
+        private System.Windows.Forms.Label lblModel;
+        private System.Windows.Forms.TextBox tbxModel;
+        private System.Windows.Forms.TextBox tbxMake;
+        private System.Windows.Forms.Label lblMake;
+        private System.Windows.Forms.Label lblVPurchasePrice;
+        private System.Windows.Forms.Label lblVDeposit;
+        private System.Windows.Forms.NumericUpDown udVDeposit;
+        private System.Windows.Forms.Label lblVInterestRate;
+        private System.Windows.Forms.NumericUpDown udVRate;
+        private System.Windows.Forms.Label lblPremium;
+        private System.Windows.Forms.NumericUpDown udPremium;
     }
 }
 

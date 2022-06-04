@@ -14,9 +14,11 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Calculating full home loan repayment
             //Formula: A=P*(1+i*n)
 
+            //Subtract deposit from puchase price because that is already paid
+            //Multiply by interest rate and divide by period of time amount should be paid in
             LoanRepaymentFull = (PurchasePrice - Deposit)* ((1.00 + (Interest/100.00)) * (Months/12.00));
 
-
+            //Returns final value
             return LoanRepaymentFull;
         }
         public double MonthlyRepayment(double Deposit, double PurchasePrice, double Interest, double Months)
@@ -24,8 +26,11 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Calculating monthly home loan repayment
             //Formula: A=P*(1+i*n)
 
+            //Subtract deposit from puchase price because that is already paid
+            //Multiply by interest rate and divide by period of time amount should be paid in
             LoanRepayment = ((PurchasePrice - Deposit) *( (1.00 + (Interest / 100.00) )* (Months / 12.00)))/Months;
 
+            //Returns final value
             return LoanRepayment;
         }
     }
