@@ -13,6 +13,8 @@ using System.Collections;
 
 namespace PROG_POE_Part1_BudgetPlanner
 {
+    public delegate void ExpenseExceedDelegate(double GrossIncome, double Groceries,
+        double Water, double Travel, double Phone, double Other, double Tax);
     //Main class
     public partial class frmBudgetPlanner : Form
     {
@@ -313,22 +315,38 @@ namespace PROG_POE_Part1_BudgetPlanner
             udVisible();
         }
 
-        //Code in calculate and display button
-
-        public double SumOfArray(double groceries, double water, double travel, double phone, double other, double tax)
+        //Generic collection = List
+        //Calculates sum of expenses
+        public double SumOfExpenses(double groceries, double water, double travel, double phone, double other, double tax)
         {
-            //declaing and populating expense array -datatype double
-            //populates array with 7 values- the variables used to hold expense values
-            double[] arrExpenses = {groceries, water,travel,phone,other,tax};
+            //Creating a list for expenses
+            List<double> lstExpense = new List<double>();
 
-            //Calculating sum of expense array
-            double sum = 0;
-            Array.ForEach(arrExpenses, i => sum += i);
+            //Adding expense items to list
+            lstExpense.AddRange(new double[] {groceries, water, travel,phone,other, tax});
 
-            //Displays sum of array
-            Console.WriteLine(sum);
+            //Summing items in list
+            double sum = lstExpense.Sum(j => Convert.ToDouble(j));
 
             return (sum);
+        }
+
+        public void ExpenceExceed(double grossIncome,double groceries, double water, double travel, double phone, double other, double tax)
+        {
+            double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
+            double incomeExceed = grossIncome * (75 / 100);
+            //string exceed = "";
+            if (sum > incomeExceed)
+            {
+                MessageBox.Show( "Your income is higher than 75% of your gross monthly income.");
+                
+            }
+            else
+            {
+                MessageBox.Show("Your income is not higher than 75% of your gross monthly income.");
+            }
+                
+               
         }
 
 
@@ -379,7 +397,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             double totalMonthlyVehicleRepaymentCost = 0.00;
 
             //Stores sum of array
-            double sum = SumOfArray(groceries, water, travel, phone, other, tax);
+            double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
 
             //Creating an instance of the MortgageLoan class 
             MortgageLoan mL = new MortgageLoan();
@@ -436,6 +454,40 @@ namespace PROG_POE_Part1_BudgetPlanner
            
         }
 
+        public class ExpenseDisplay
+        {
+            public string expense;
+            public double amount;
+
+            public ExpenseDisplay(string expense, double amount)
+            {
+                this.expense = expense;
+                this.amount = amount;
+            }
+
+            public override string ToString()
+            {
+                return expense + ": R" + amount + "\n";
+            }
+        }
+
+        public string DisplayExpense(double groceries, double water, double travel, double phone, double other, double tax)
+        {
+            List<ExpenseDisplay> ex = new List<ExpenseDisplay>();
+            ex.Add(new ExpenseDisplay("Grocery costs", groceries));
+            ex.Add(new ExpenseDisplay("Water and lights costs", water));
+            ex.Add(new ExpenseDisplay("Travel costs", travel));
+            ex.Add(new ExpenseDisplay("Telephone and cellphone costs", phone));
+            ex.Add(new ExpenseDisplay("Other expense costs", other));
+            ex.Add(new ExpenseDisplay("Tax", tax));
+
+            var sortedList = ex.OrderByDescending(x => x.expense).ToList();
+
+            string displaySorted = Convert.ToString(String.Join("", sortedList));
+
+            return displaySorted;
+        }
+
         //Calculate and display expense
         private void btnExpenses_Click(object sender, EventArgs e)
         {
@@ -460,13 +512,21 @@ namespace PROG_POE_Part1_BudgetPlanner
             double monthlyAvailableMoney = 0.00;
 
             //Stores sum of array
-            double sum = SumOfArray(groceries, water, travel, phone, other, tax);
+            double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
+
+            frmBudgetPlanner f = new frmBudgetPlanner();
+
+            ExpenseExceedDelegate exD = new ExpenseExceedDelegate(f.ExpenceExceed);
+
+            exD(grossIncome, groceries, water, travel, phone, other, tax);
 
             //Calculates the monthly available money
             monthlyAvailableMoney = grossIncome - (sum);
 
                 //Calculates the monthly available amount by subtracting the sum of the expenses from the gross income
                 monthlyAvailableMoney = grossIncome - (sum);
+
+            string displaySorted = DisplayExpense(groceries, water, travel, phone, other, tax);
 
             //Displays output if rent is chosen
             if (cmbChooseHousing.SelectedItem == "Renting.")
@@ -482,7 +542,8 @@ namespace PROG_POE_Part1_BudgetPlanner
 
                 //Displays gross income after deductions
                "\n\nAvailable amount after deducting the rent expense is: R" +
-               Convert.ToString(monthlyAvailableMoney - rent);
+               Convert.ToString(monthlyAvailableMoney - rent)+
+               "\n"+displaySorted;
 
             }
             else
@@ -491,7 +552,8 @@ namespace PROG_POE_Part1_BudgetPlanner
                 redDisplay.Text = "Your total expenses for the month excluding the rent expense is: R" +
                               Convert.ToString(sum)+
                               "\n\nAvailable amount before deductions is: R" +
-               Convert.ToString(monthlyAvailableMoney) ;
+               Convert.ToString(monthlyAvailableMoney) +
+               "\n" + displaySorted;
 
             }
 
