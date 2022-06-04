@@ -10,11 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace PROG_POE_Part1_BudgetPlanner
 {
+    //Instantiate delegates
     public delegate void ExpenseExceedDelegate(double GrossIncome, double Groceries,
         double Water, double Travel, double Phone, double Other, double Tax);
+
+    public delegate void ExpenseLoanDelegate(double GrossIncome, double Groceries,
+        double Water, double Travel, double Phone, double Other, double Tax, double PurchasePrice,
+            double Totaldeposit, double Interest, double Repay);
+
     //Main class
     public partial class frmBudgetPlanner : Form
     {
@@ -328,27 +335,69 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Summing items in list
             double sum = lstExpense.Sum(j => Convert.ToDouble(j));
 
+            //returns sum to be displayed
             return (sum);
         }
 
+        //Ensures that user is informed when sum of expenses is higher than 75% of gross income
         public void ExpenceExceed(double grossIncome,double groceries, double water, double travel, double phone, double other, double tax)
         {
+            //calls method that calculates sum of expenses
             double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
+
+            //Calculates 75% of the gross income
             double incomeExceed = grossIncome * (75 / 100);
-            //string exceed = "";
+            
+            //if the total expense exceeds 75% of the gross income the error message below will display
             if (sum > incomeExceed)
             {
-                MessageBox.Show( "Your income is higher than 75% of your gross monthly income.");
+                MessageBox.Show( "Your expense is higher than 75% of your gross monthly income.");
                 
             }
             else
             {
-                MessageBox.Show("Your income is not higher than 75% of your gross monthly income.");
+                //if the total expense does not exceeds 75% of the gross income the message below will display
+                MessageBox.Show("Your expense is not higher than 75% of your gross monthly income.");
             }
                 
                
         }
 
+        //Ensures that user is informed when sum of expenses is higher than 75% of gross income
+        public void ExpenseLoanExceed(double grossIncome, double groceries, double water, 
+            double travel, double phone, double other, double tax, double purchasePrice, 
+            double totaldeposit, double interest, double repay)
+        {
+            //Creating an instance of the MortgageLoan class 
+            MortgageLoan mL = new MortgageLoan();
+
+            double monthlyRepaymentValue;
+
+            //Calls the monthlyRepaymentValue method which calculates the monthly homeloan amount required to be paid
+            //Calculates the monthly home loan repayment
+            monthlyRepaymentValue = mL.MonthlyRepayment(totaldeposit, purchasePrice, interest, repay);
+
+            //calls method that calculates sum of expenses
+            double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
+
+            //Calculates 75% of the gross income
+            double incomeExceed = grossIncome * (75 / 100);
+            
+            //if the total expense exceeds 75% of the gross income the error message below will display
+            if ((sum +monthlyRepaymentValue)> incomeExceed)
+            {
+                MessageBox.Show("Your expense + monthly home loan repayment value is higher than 75% of your gross monthly income.");
+
+            }
+            else
+            {
+                //if the total expense does not exceeds 75% of the gross income the message below will display
+                MessageBox.Show("Your expense is not higher than 75% of your gross monthly income.");
+            }
+
+
+        }
+        
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -454,26 +503,34 @@ namespace PROG_POE_Part1_BudgetPlanner
            
         }
 
+        //Created class used for displaying expenses 
         public class ExpenseDisplay
         {
+            //Class fields
             public string expense;
             public double amount;
 
+            //Class constructor
             public ExpenseDisplay(string expense, double amount)
             {
                 this.expense = expense;
                 this.amount = amount;
             }
 
+            //Format of display form
             public override string ToString()
             {
-                return expense + ": R" + amount + "\n";
+                return "\n"+ expense + ": R" + amount + "\n";
             }
         }
 
+        //Method displays expense name and amount in descending order
         public string DisplayExpense(double groceries, double water, double travel, double phone, double other, double tax)
         {
+            //create List to store expenses and amounts
             List<ExpenseDisplay> ex = new List<ExpenseDisplay>();
+           
+            //Add expenses and amounts in List
             ex.Add(new ExpenseDisplay("Grocery costs", groceries));
             ex.Add(new ExpenseDisplay("Water and lights costs", water));
             ex.Add(new ExpenseDisplay("Travel costs", travel));
@@ -481,10 +538,13 @@ namespace PROG_POE_Part1_BudgetPlanner
             ex.Add(new ExpenseDisplay("Other expense costs", other));
             ex.Add(new ExpenseDisplay("Tax", tax));
 
-            var sortedList = ex.OrderByDescending(x => x.expense).ToList();
+            //Sort amounts in descending order
+            var sortedList = ex.OrderByDescending(x => x.amount).ToList();
 
+            //Display sorted amounts
             string displaySorted = Convert.ToString(String.Join("", sortedList));
 
+            //return display value
             return displaySorted;
         }
 
@@ -504,6 +564,13 @@ namespace PROG_POE_Part1_BudgetPlanner
             double other = decimal.ToDouble(udOtherEx.Value);
             double tax = decimal.ToDouble(udTax.Value);
 
+            //Declares variables and assigns property buying related input values to them 
+            //Converts input values to prefered datatype: double/real
+            double purchasePrice = decimal.ToDouble(udPurchasePrice.Value);
+            double totaldeposit = decimal.ToDouble(udDeposit.Value);
+            double interest = decimal.ToDouble(udInterest.Value);
+            double repay = decimal.ToDouble(udRepayMonths.Value);
+
             //Declares variables and assigns expense/rent irelated nput values to them 
             //Converts input values to prefered datatype: double/real
             double rent = decimal.ToDouble(udRentAmount.Value);
@@ -514,28 +581,36 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Stores sum of array
             double sum = SumOfExpenses(groceries, water, travel, phone, other, tax);
 
+            //Instatiation of class
             frmBudgetPlanner f = new frmBudgetPlanner();
 
+            //Using delegate to call method that calculates if total expenses is higher than 75% of gross income
             ExpenseExceedDelegate exD = new ExpenseExceedDelegate(f.ExpenceExceed);
 
-            exD(grossIncome, groceries, water, travel, phone, other, tax);
+            ExpenseLoanDelegate exD2 = new ExpenseLoanDelegate(f.ExpenseLoanExceed);
 
             //Calculates the monthly available money
             monthlyAvailableMoney = grossIncome - (sum);
 
-                //Calculates the monthly available amount by subtracting the sum of the expenses from the gross income
-                monthlyAvailableMoney = grossIncome - (sum);
+            //Calculates the monthly available amount by subtracting the sum of the expenses from the gross income
+            monthlyAvailableMoney = grossIncome - (sum);
 
             string displaySorted = DisplayExpense(groceries, water, travel, phone, other, tax);
 
             //Displays output if rent is chosen
             if (cmbChooseHousing.SelectedItem == "Renting.")
             {
+                //Executes method using delegate
+                exD(grossIncome, groceries, water, travel, phone, other, tax); 
+
+                //Displays total expenses
                 redDisplay.Text = "Your total expenses for the month excluding the rent expense is: R" +
               Convert.ToString(sum)+
+              
+              //Displays total expenses including rent
               "\n\nYour total expenses for the month incuding the rent expense is: R" +
                 Convert.ToString(sum + rent) +
-
+               
                 //Displays gross income before deductions
                "\n\nAvailable amount before deducting the rent expense is: R" +
                Convert.ToString(monthlyAvailableMoney) +
@@ -548,6 +623,10 @@ namespace PROG_POE_Part1_BudgetPlanner
             }
             else
             {
+                //Uses delegate to execute the method
+                exD2(grossIncome, groceries, water, travel, phone, other, tax, purchasePrice, totaldeposit,
+                    interest,repay);
+
                 //Displays output if rent is not chosen
                 redDisplay.Text = "Your total expenses for the month excluding the rent expense is: R" +
                               Convert.ToString(sum)+
@@ -721,6 +800,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Dipsplays repayment details if vehicle is chosen
             if (cmbVehicleChoice.SelectedItem == "Yes.")
             {
+                //Dsiplays model, make and total car repayment
                 redDisplay.Text = "\nYou have chosen to buy a vehicle. The vehicle model is " + tbxModel +
                     " and the make is " + tbxMake + "." +
                     "The total monthly repayment is R" + Convert.ToString(totalMonthlyVehicleRepaymentCost);
@@ -730,6 +810,44 @@ namespace PROG_POE_Part1_BudgetPlanner
             {
                 //Informs user that they have chosen to not buy a vehicle
                 redDisplay.Text = "You have chosen to not purchase a vehicle.";
+            }
+        }
+
+        //Ensures user can only insert a string input
+        private void tbxModel_TextChanged(object sender, EventArgs e)
+        {
+            String input = tbxModel.Text;
+
+            input = input.Trim();
+            input = input.ToUpper();
+            Regex rgz = new Regex("^[A-Za-z]");
+            bool validateInput = rgz.IsMatch(input);
+
+            if (validateInput)
+            {
+            }
+            else
+            {
+                tbxModel.Text = "";
+                MessageBox.Show("Invalid Character/s.");
+            }
+        }
+
+        //Ensures user can only insert a string input
+        private void tbxMake_TextChanged(object sender, EventArgs e)
+        {
+            String input = tbxMake.Text;
+            input = input.Trim();
+            input = input.ToUpper();
+            Regex rgz = new Regex("^[A-Za-z]");
+            bool validateInput = rgz.IsMatch(input);
+            if (validateInput)
+            { 
+            }
+            else
+            {
+                tbxMake.Text = "";
+                MessageBox.Show("Invalid Character/s.");
             }
         }
 

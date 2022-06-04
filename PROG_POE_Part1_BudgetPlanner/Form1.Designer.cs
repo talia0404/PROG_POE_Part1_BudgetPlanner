@@ -454,6 +454,11 @@ namespace PROG_POE_Part1_BudgetPlanner
             0,
             0});
             this.udOtherEx.Location = new System.Drawing.Point(390, 604);
+            this.udOtherEx.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
             this.udOtherEx.Name = "udOtherEx";
             this.udOtherEx.Size = new System.Drawing.Size(180, 30);
             this.udOtherEx.TabIndex = 49;
@@ -725,6 +730,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.tbxModel.Size = new System.Drawing.Size(198, 30);
             this.tbxModel.TabIndex = 66;
             this.tbxModel.Visible = false;
+            this.tbxModel.TextChanged += new System.EventHandler(this.tbxModel_TextChanged);
             // 
             // tbxMake
             // 
@@ -733,6 +739,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.tbxMake.Size = new System.Drawing.Size(198, 30);
             this.tbxMake.TabIndex = 68;
             this.tbxMake.Visible = false;
+            this.tbxMake.TextChanged += new System.EventHandler(this.tbxMake_TextChanged);
             // 
             // lblMake
             // 

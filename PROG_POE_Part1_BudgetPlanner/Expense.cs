@@ -20,6 +20,7 @@ namespace PROG_POE_Part1_BudgetPlanner
 
         }
 
+        //constrcutor
         protected Expense(double loanRepayment, double loanRepaymentFull)
         {
             this.loanRepayment = loanRepayment;
