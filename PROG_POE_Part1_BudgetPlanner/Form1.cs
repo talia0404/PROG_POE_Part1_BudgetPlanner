@@ -56,9 +56,10 @@ namespace PROG_POE_Part1_BudgetPlanner
                 lblRepay.Visible = false;
                 udRepayMonths.Visible = false;
                 redDisplay.Visible = false;
-                
+                btnClearHomeLoan.Visible = false;
+
                 //Output component will remain clear
-               redDisplay.Clear();
+                redDisplay.Clear();
             }
             else
             {
@@ -83,6 +84,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                     udRentAmount.Visible = false;
                     btnCalculateHL.Visible = false;
                     redDisplay.Visible = false;
+                    btnClearRent.Visible = false;
 
                     btnCalculateHL.Text = "Calculate home loan repayment.";
 
@@ -319,6 +321,34 @@ namespace PROG_POE_Part1_BudgetPlanner
         {
             /*Calls method to make display components invisible so input can be validated before calculated
              when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udVPurchasePrice_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+           when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udVDeposit_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+            when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udVRate_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+            when numericUpDown value is changed */
+            udVisible();
+        }
+
+        private void udPremium_ValueChanged(object sender, EventArgs e)
+        {
+            /*Calls method to make display components invisible so input can be validated before calculated
+            when numericUpDown value is changed */
             udVisible();
         }
 
@@ -816,6 +846,10 @@ namespace PROG_POE_Part1_BudgetPlanner
         //Ensures user can only insert a string input
         private void tbxModel_TextChanged(object sender, EventArgs e)
         {
+            /*Calls method to make display components invisible so input can be validated before calculated
+            when numericUpDown value is changed */
+            udVisible();
+
             String input = tbxModel.Text;
 
             input = input.Trim();
@@ -836,6 +870,10 @@ namespace PROG_POE_Part1_BudgetPlanner
         //Ensures user can only insert a string input
         private void tbxMake_TextChanged(object sender, EventArgs e)
         {
+            /*Calls method to make display components invisible so input can be validated before calculated
+            when numericUpDown value is changed */
+            udVisible();
+
             String input = tbxMake.Text;
             input = input.Trim();
             input = input.ToUpper();
@@ -851,10 +889,42 @@ namespace PROG_POE_Part1_BudgetPlanner
             }
         }
 
+        //Clears all components related to vehicle choice
+        private void btnClearVehicle_Click(object sender, EventArgs e)
+        {
+            cmbVehicleChoice.Text = "";
+            tbxModel.Text = "";
+            tbxMake.Text = "";
+            udVPurchasePrice.Value = 0;
+            udVDeposit.Value = 0;
+            udVRate.Value = 0;
+            udPremium.Value = 0;
+        }
 
 
+        /*Referencing:
+         * Date:16 Sept 2013
+         * Website Name:asp.net - c# - How to get sum of the values from List? - StackOverflow
+         * URL:https://stackoverflow.com/questions/18824761/c-sharp-how-to-get-sum-of-the-values-from-list
+         */
 
+        /*Referencing:
+         * Date: NA
+         * Website Name:Sort list in descending order in C#, TechDelight
+         * URL:https://www.techiedelight.com/sort-list-in-descending-order-in-csharp/#:~:text=OrderByDescending()%20Method,key%20or%20a%20specified%20comparer.
+         */
 
+        /*Referencing:
+         * Date: NA
+         * Website Name:C# - Delegates - Tutorialspoint
+         * URL:https://www.tutorialspoint.com/csharp/csharp_delegates.htm#:~:text=C%23%20delegates%20are%20similar%20to,and%20the%20call%2Dback%20methods.
+         */
+
+        /*Referencing:
+         * Date:NA
+         * Website Name:Verifying that a string contains only letters in C# - Stack Overflow
+         * URL:https://stackoverflow.com/questions/1181419/verifying-that-a-string-contains-only-letters-in-c-sharp
+         */
 
         /*Referencing:
          * Date:NA

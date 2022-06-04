@@ -82,6 +82,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udPremium = new System.Windows.Forms.NumericUpDown();
             this.btnVehicle = new System.Windows.Forms.Button();
             this.btnExpenses = new System.Windows.Forms.Button();
+            this.btnClearVehicle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.udMonthlyIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udGroceries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udWaterLights)).BeginInit();
@@ -628,7 +629,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnClearRent.Location = new System.Drawing.Point(1056, 698);
             this.btnClearRent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClearRent.Name = "btnClearRent";
-            this.btnClearRent.Size = new System.Drawing.Size(187, 42);
+            this.btnClearRent.Size = new System.Drawing.Size(187, 68);
             this.btnClearRent.TabIndex = 59;
             this.btnClearRent.Text = "CLEAR RENT AMOUNTS";
             this.btnClearRent.UseVisualStyleBackColor = false;
@@ -640,10 +641,10 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnClearHomeLoan.BackColor = System.Drawing.Color.CadetBlue;
             this.btnClearHomeLoan.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClearHomeLoan.ForeColor = System.Drawing.Color.White;
-            this.btnClearHomeLoan.Location = new System.Drawing.Point(1056, 700);
+            this.btnClearHomeLoan.Location = new System.Drawing.Point(1059, 698);
             this.btnClearHomeLoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClearHomeLoan.Name = "btnClearHomeLoan";
-            this.btnClearHomeLoan.Size = new System.Drawing.Size(184, 39);
+            this.btnClearHomeLoan.Size = new System.Drawing.Size(184, 71);
             this.btnClearHomeLoan.TabIndex = 60;
             this.btnClearHomeLoan.Text = "CLEAR PROPERTY AMOUNTS";
             this.btnClearHomeLoan.UseVisualStyleBackColor = false;
@@ -708,6 +709,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udVPurchasePrice.Size = new System.Drawing.Size(198, 30);
             this.udVPurchasePrice.TabIndex = 65;
             this.udVPurchasePrice.Visible = false;
+            this.udVPurchasePrice.ValueChanged += new System.EventHandler(this.udVPurchasePrice_ValueChanged);
             // 
             // lblModel
             // 
@@ -801,6 +803,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udVDeposit.Size = new System.Drawing.Size(198, 30);
             this.udVDeposit.TabIndex = 70;
             this.udVDeposit.Visible = false;
+            this.udVDeposit.ValueChanged += new System.EventHandler(this.udVDeposit_ValueChanged);
             // 
             // lblVInterestRate
             // 
@@ -829,6 +832,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udVRate.Size = new System.Drawing.Size(198, 30);
             this.udVRate.TabIndex = 72;
             this.udVRate.Visible = false;
+            this.udVRate.ValueChanged += new System.EventHandler(this.udVRate_ValueChanged);
             // 
             // lblPremium
             // 
@@ -862,6 +866,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udPremium.Size = new System.Drawing.Size(198, 30);
             this.udPremium.TabIndex = 74;
             this.udPremium.Visible = false;
+            this.udPremium.ValueChanged += new System.EventHandler(this.udPremium_ValueChanged);
             // 
             // btnVehicle
             // 
@@ -893,12 +898,28 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnExpenses.Visible = false;
             this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
             // 
+            // btnClearVehicle
+            // 
+            this.btnClearVehicle.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnClearVehicle.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearVehicle.ForeColor = System.Drawing.Color.White;
+            this.btnClearVehicle.Location = new System.Drawing.Point(1009, 868);
+            this.btnClearVehicle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClearVehicle.Name = "btnClearVehicle";
+            this.btnClearVehicle.Size = new System.Drawing.Size(184, 71);
+            this.btnClearVehicle.TabIndex = 78;
+            this.btnClearVehicle.Text = "CLEAR VEHICLE AMOUNTS";
+            this.btnClearVehicle.UseVisualStyleBackColor = false;
+            this.btnClearVehicle.Visible = false;
+            this.btnClearVehicle.Click += new System.EventHandler(this.btnClearVehicle_Click);
+            // 
             // frmBudgetPlanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1924, 987);
+            this.Controls.Add(this.btnClearVehicle);
             this.Controls.Add(this.btnExpenses);
             this.Controls.Add(this.btnVehicle);
             this.Controls.Add(this.lblPremium);
@@ -1032,6 +1053,7 @@ namespace PROG_POE_Part1_BudgetPlanner
         private System.Windows.Forms.NumericUpDown udPremium;
         private System.Windows.Forms.Button btnVehicle;
         private System.Windows.Forms.Button btnExpenses;
+        private System.Windows.Forms.Button btnClearVehicle;
     }
 }
 
