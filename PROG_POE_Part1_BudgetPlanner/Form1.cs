@@ -20,7 +20,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             InitializeComponent();
         }
 
-        //Makes correct components relevant to choice chosen in the comcobox appear/dissapear
+        //Ensures correct components relevant to choice chosen in the comcobox appear/dissapear
         private void cmbChooseHousing_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Displays input components if the Rent option is chosen
@@ -33,6 +33,9 @@ namespace PROG_POE_Part1_BudgetPlanner
                 btnClearRent.Visible = true;
                 btnComplete.Visible = true;
 
+                //Changes home loan button text to display rent
+                btnCalculateHL.Text = "Calculate rent";
+
                 //Makes relevent components invisible
                 lblPurchasePrice.Visible = false;
                 udPurchasePrice.Visible = false;
@@ -42,11 +45,10 @@ namespace PROG_POE_Part1_BudgetPlanner
                 udInterest.Visible = false;
                 lblRepay.Visible = false;
                 udRepayMonths.Visible = false;
-                btnCalculate.Visible = false;
                 redDisplay.Visible = false;
                 
                 //Output component will remain clear
-                redDisplay.Clear();
+               redDisplay.Clear();
             }
             else
             {
@@ -69,7 +71,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                     //Makes relevant components invisible
                     lblRentAmount.Visible = false;
                     udRentAmount.Visible = false;
-                    btnCalculate.Visible = false;
+                    btnCalculateHL.Visible = false;
                     redDisplay.Visible = false;
 
                     //Output component will remain clear
@@ -82,7 +84,9 @@ namespace PROG_POE_Part1_BudgetPlanner
         private void InvisibleDisplay()
         {
             //Makes display components invisible so input can be validated before calculated
-            btnCalculate.Visible = false;
+            btnCalculateHL.Visible = false;
+            btnExpenses.Visible = false;
+            btnVehicle.Visible = false;
             redDisplay.Visible = false;
             //Output component will remain clear
             redDisplay.Clear();
@@ -97,6 +101,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Ensures that valid housing option is given
             if ((cmbChooseHousing.SelectedItem != "Renting.") && (cmbChooseHousing.SelectedItem != "Buying a property."))
             {
+
                 //Displays error message to user if input is inavalid 
                 MessageBox.Show("Please choose valid housing option.");
 
@@ -107,7 +112,9 @@ namespace PROG_POE_Part1_BudgetPlanner
 
             {
                 //Ensures that user can calculate amounts if correct value is given
-                btnCalculate.Visible = true;
+                btnCalculateHL.Visible = true;
+                btnExpenses.Visible = true;
+                btnVehicle.Visible = true;
                 redDisplay.Visible = true;
             }
 
@@ -142,7 +149,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                 }
 
                 //Ensures that valid vehicle option is given
-                if ((cmbVehicleChoice.SelectedItem != "Yes.") && (cmbVehicleChoice.SelectedItem != "No."))
+                if ((cmbVehicleChoice.SelectedItem != "Yes.") || (cmbVehicleChoice.SelectedItem != "No."))
                 {
                     //Displays error message to user if input is inavalid 
                     MessageBox.Show("Please choose valid option.");
@@ -154,7 +161,9 @@ namespace PROG_POE_Part1_BudgetPlanner
 
                 {
                     //Ensures that user can calculate amounts if correct value is given
-                    btnCalculate.Visible = true;
+                    btnCalculateHL.Visible = true;
+                    btnExpenses.Visible = true;
+                    btnVehicle.Visible = true;
                     redDisplay.Visible = true;
                 }
 
@@ -207,7 +216,9 @@ namespace PROG_POE_Part1_BudgetPlanner
         //Makes validation button visible so inputs can be calculated
         private void udVisible()
         {
-            btnCalculate.Visible = false;
+            btnCalculateHL.Visible = false;
+            btnExpenses.Visible = false;
+            btnVehicle.Visible = false;
             redDisplay.Visible = false;
             btnComplete.Visible = true;
             redDisplay.Clear();
@@ -299,13 +310,28 @@ namespace PROG_POE_Part1_BudgetPlanner
         }
 
         //Code in calculate and display button
+
+        public double SumOfArray(double groceries, double water, double travel, double phone, double other, double tax)
+        {
+            //declaing and populating expense array -datatype double
+            //populates array with 7 values- the variables used to hold expense values
+            double[] arrExpenses = {groceries, water,travel,phone,other,tax};
+
+            //Calculating sum of expense array
+            double sum = 0;
+            Array.ForEach(arrExpenses, i => sum += i);
+
+            //Displays sum of array
+            Console.WriteLine(sum);
+
+            return (sum);
+        }
+
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             //Makes validation button invisible each time button is clicked
             btnComplete.Visible = false;
-
-            //Clears the richTextBox everytime the button is clicked
-            redDisplay.Clear();
 
             //Declares variables and assigns expense related input values to them 
             //Converts input values to prefered datatype: double/real
@@ -316,10 +342,6 @@ namespace PROG_POE_Part1_BudgetPlanner
             double phone = decimal.ToDouble(udPhone.Value);
             double other = decimal.ToDouble(udOtherEx.Value);
             double tax = decimal.ToDouble(udTax.Value);
-
-            //Declares variables and assigns expense/rent irelated nput values to them 
-            //Converts input values to prefered datatype: double/real
-            double rent = decimal.ToDouble(udRentAmount.Value);
 
             //Declares variables and assigns property buying related input values to them 
             //Converts input values to prefered datatype: double/real
@@ -352,21 +374,8 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Stores total Monthly Vehicle Repayment Cost
             double totalMonthlyVehicleRepaymentCost = 0.00;
 
-
-
-
-
-
-            //declaing and populating expense array - datatype double
-            //populates array with 7 values- the variables used to hold expense values
-            double[] arrExpenses = new double[7]
-                {groceries, water,travel,phone,other,tax,totaldeposit};
-
-            //Calculating sum of expense array
-            double sum = 0;
-            Array.ForEach(arrExpenses, i => sum += i);
-
-            Console.WriteLine(sum);
+            //Stores sum of array
+            double sum = SumOfArray(groceries, water, travel, phone, other, tax);
 
             //Creating an instance of the MortgageLoan class 
             MortgageLoan mL = new MortgageLoan();
@@ -382,32 +391,13 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Calculates the monthly available money
             monthlyAvailableMoney = grossIncome - (sum);
 
-            
+
 
             //Displays relevant values if rent option is chosen
             if (cmbChooseHousing.SelectedItem == "Renting.")
             {
-
-                //Calculates the monthly available amount by subtracting the sum of the expenses from the gross income
-                monthlyAvailableMoney = grossIncome - (sum);
-
-                //Displays gross income, rent amount, total expenses, monthly available amount
-                redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
-                "\n\nYou have chosen to rent a living space. Your monthly rent will be: R" +
-
-                Convert.ToString(rent) +
-                "\n\nYour total expenses for the month excluding the rent expense is: R" +
-
-                Convert.ToString(sum) +
-                "\n\nYour total expenses for the month incuding the rent expense is: R" +
-
-                Convert.ToString(sum + rent) +
-                "\n\nAvailable amount before deducting the rent expense is: R" +
-
-                Convert.ToString(monthlyAvailableMoney) +
-                "\n\nAvailable amount after deducting the rent expense is: R" +
-
-                Convert.ToString(monthlyAvailableMoney - rent);
+                //Informs user that calculation has already been done
+                MessageBox.Show("Calculated in expense button.");
 
             }
             else
@@ -424,21 +414,15 @@ namespace PROG_POE_Part1_BudgetPlanner
                     }
 
                     //Displays income, total expenses, monthly available amount, monthly repayment amaount, monthly repayment amount deducted from monthly available amount
-                    redDisplay.Text = "Your monthly gross income is: R" + Convert.ToString(grossIncome) +
-                    "\n\nYou have chosen to buy a property. Your monthly home loan repayment amount is: R" +
-
+                    redDisplay.Text = "You have chosen to buy a property. Your monthly home loan repayment amount is: R" +
                     Convert.ToString(monthlyRepaymentValue) + " and is likely to be approved." +
-                    "\n\nYour total expenses for the month excluding the home loan repayment is: R" +
-
-                    Convert.ToString(sum) +
+                    
+                    //Displays gross income before deductions
                     "\n\nYour total expenses for the month including the home loan repayment is: R" +
-
                     Convert.ToString(sum + monthlyRepaymentValue) +
-                    "\n\nAvailable amount before deducting the home repayment is: R" +
-
-                    Convert.ToString(monthlyAvailableMoney) +
+                    
+                    //Displays gross income after deductions
                     "\n\nAvailable amount after deducting the home repayment is: R" +
-
                     Convert.ToString(monthlyAvailableMoney - monthlyRepaymentValue)
                     ;
 
@@ -448,16 +432,72 @@ namespace PROG_POE_Part1_BudgetPlanner
 
             }
 
-            //Creating an instance of the VehicleCalculation class
-            VehicleCalculation vc = new VehicleCalculation();
-
-            totalMonthlyVehicleRepaymentCost = vc.monthlyVehicleCost(vDeposit, vPurchasePrice, vRate, Premium);
-
-            if(cmbVehicleChoice.SelectedItem == "Yes.")
-            {
-                MessageBox.Show(Convert.ToString(totalMonthlyVehicleRepaymentCost));
-            }
+           
         }
+
+        //Calculate and display expense
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            //Makes validation button invisible each time button is clicked
+            btnComplete.Visible = false;
+
+            //Declares variables and assigns expense related input values to them 
+            //Converts input values to prefered datatype: double/real
+            double grossIncome = decimal.ToDouble(udMonthlyIncome.Value);
+            double groceries = decimal.ToDouble(udGroceries.Value);
+            double water = decimal.ToDouble(udWaterLights.Value);
+            double travel = decimal.ToDouble(udTravel.Value);
+            double phone = decimal.ToDouble(udPhone.Value);
+            double other = decimal.ToDouble(udOtherEx.Value);
+            double tax = decimal.ToDouble(udTax.Value);
+
+            //Declares variables and assigns expense/rent irelated nput values to them 
+            //Converts input values to prefered datatype: double/real
+            double rent = decimal.ToDouble(udRentAmount.Value);
+
+            //Stores monthly left over money after deducting expenses and repayment amounts
+            double monthlyAvailableMoney = 0.00;
+
+            //Stores sum of array
+            double sum = SumOfArray(groceries, water, travel, phone, other, tax);
+
+            //Calculates the monthly available money
+            monthlyAvailableMoney = grossIncome - (sum);
+
+                //Calculates the monthly available amount by subtracting the sum of the expenses from the gross income
+                monthlyAvailableMoney = grossIncome - (sum);
+
+            //Displays output if rent is chosen
+            if (cmbChooseHousing.SelectedItem == "Renting.")
+            {
+                redDisplay.Text = "Your total expenses for the month excluding the rent expense is: R" +
+              Convert.ToString(sum)+
+              "\n\nYour total expenses for the month incuding the rent expense is: R" +
+                Convert.ToString(sum + rent) +
+
+                //Displays gross income before deductions
+               "\n\nAvailable amount before deducting the rent expense is: R" +
+               Convert.ToString(monthlyAvailableMoney) +
+
+                //Displays gross income after deductions
+               "\n\nAvailable amount after deducting the rent expense is: R" +
+               Convert.ToString(monthlyAvailableMoney - rent);
+
+            }
+            else
+            {
+                //Displays output if rent is not chosen
+                redDisplay.Text = "Your total expenses for the month excluding the rent expense is: R" +
+                              Convert.ToString(sum)+
+                              "\n\nAvailable amount before deductions is: R" +
+               Convert.ToString(monthlyAvailableMoney) ;
+
+            }
+
+
+
+        }
+
 
         //Clears all monthly expenditure values
         private void btnClearExpenses_Click(object sender, EventArgs e)
@@ -505,7 +545,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Clears richTextBox
             redDisplay.Clear();
             //Makes calculate button and richTextBox invisible so that inputs can be validated before anything is displayed
-            btnCalculate.Visible = false;
+            btnCalculateHL.Visible = false;
             redDisplay.Visible = false;
             btnComplete.Visible = true;
 
@@ -526,12 +566,14 @@ namespace PROG_POE_Part1_BudgetPlanner
 
         }
 
-        //Part 2
+        //PART 2
 
+        //Ensures correct components relevant to choice chosen in the comcobox appear/dissapear
         private void cmbVehicleChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbVehicleChoice.SelectedItem == "Yes.")
             {
+                //Appropriate components relevent to purchasing a vehicle will be visible
                 lblEnter2.Visible = true;
                 lblModel.Visible = true;
                 tbxModel.Visible = true;
@@ -545,14 +587,17 @@ namespace PROG_POE_Part1_BudgetPlanner
                 udVRate.Visible = true;
                 lblPremium.Visible = true;
                 udPremium.Visible = true;
-
                 udVisible();
+
+                //Output component will remain clear
+                redDisplay.Clear();
 
             }
             else
             {
                 if (cmbVehicleChoice.SelectedItem == "No.")
                 {
+                    //Appropriate components relevent to not purchasing a vehicle will be invisible
                     lblEnter2.Visible = false;
                     lblModel.Visible = false;
                     tbxModel.Visible = false;
@@ -566,7 +611,12 @@ namespace PROG_POE_Part1_BudgetPlanner
                     udVRate.Visible = false;
                     lblPremium.Visible = false;
                     udPremium.Visible = false;
+                    udVisible();
 
+                    //Output component will remain clear
+                    redDisplay.Clear();
+
+                    //Appropriate components will be cleared
                     tbxModel.Text="";
                     tbxMake.Text = "";
                     udVPurchasePrice.Value = 0;
@@ -577,6 +627,50 @@ namespace PROG_POE_Part1_BudgetPlanner
                 }
             }
         }
+
+
+        //Display vehicle repayment details
+        private void btnVehicle_Click(object sender, EventArgs e)
+        {
+
+            //Makes validation button invisible each time button is clicked
+            btnComplete.Visible = false;
+
+            //Declares variables and assigns vehicle related input values to them 
+            string vModel = tbxModel.Text;
+            string make = tbxMake.Text;
+
+            //Converts input values to prefered datatype: double/real
+            double vPurchasePrice = decimal.ToDouble(udVPurchasePrice.Value);
+            double vDeposit = decimal.ToDouble(udVDeposit.Value);
+            double vRate = decimal.ToDouble(udVRate.Value);
+            double Premium = decimal.ToDouble(udPremium.Value);
+
+            //Stores total Monthly Vehicle Repayment Cost
+            double totalMonthlyVehicleRepaymentCost = 0.00;
+
+            //Creating an instance of the VehicleCalculation class
+            VehicleCalculation vc = new VehicleCalculation();
+
+            //Calls method from vehicle class to calculate repayment amount
+            totalMonthlyVehicleRepaymentCost = vc.monthlyVehicleCost(vDeposit, vPurchasePrice, vRate, Premium);
+
+            //Dipsplays repayment details if vehicle is chosen
+            if (cmbVehicleChoice.SelectedItem == "Yes.")
+            {
+                redDisplay.Text = "\nYou have chosen to buy a vehicle. The vehicle model is " + tbxModel +
+                    " and the make is " + tbxMake + "." +
+                    "The total monthly repayment is R" + Convert.ToString(totalMonthlyVehicleRepaymentCost);
+
+            }
+            else
+            {
+                //Informs user that they have chosen to not buy a vehicle
+                redDisplay.Text = "You have chosen to not purchase a vehicle.";
+            }
+        }
+
+
 
 
 

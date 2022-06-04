@@ -30,7 +30,7 @@ namespace PROG_POE_Part1_BudgetPlanner
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCalculate = new System.Windows.Forms.Button();
+            this.btnCalculateHL = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -80,6 +80,8 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udVRate = new System.Windows.Forms.NumericUpDown();
             this.lblPremium = new System.Windows.Forms.Label();
             this.udPremium = new System.Windows.Forms.NumericUpDown();
+            this.btnVehicle = new System.Windows.Forms.Button();
+            this.btnExpenses = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.udMonthlyIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udGroceries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udWaterLights)).BeginInit();
@@ -109,20 +111,20 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.label1.TabIndex = 0;
             this.label1.Text = "Budget Planner";
             // 
-            // btnCalculate
+            // btnCalculateHL
             // 
-            this.btnCalculate.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnCalculate.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCalculate.ForeColor = System.Drawing.Color.White;
-            this.btnCalculate.Location = new System.Drawing.Point(1525, 237);
-            this.btnCalculate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(194, 48);
-            this.btnCalculate.TabIndex = 1;
-            this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = false;
-            this.btnCalculate.Visible = false;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            this.btnCalculateHL.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnCalculateHL.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCalculateHL.ForeColor = System.Drawing.Color.White;
+            this.btnCalculateHL.Location = new System.Drawing.Point(1625, 726);
+            this.btnCalculateHL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCalculateHL.Name = "btnCalculateHL";
+            this.btnCalculateHL.Size = new System.Drawing.Size(204, 83);
+            this.btnCalculateHL.TabIndex = 1;
+            this.btnCalculateHL.Text = "Calculate home loan repayment";
+            this.btnCalculateHL.UseVisualStyleBackColor = false;
+            this.btnCalculateHL.Visible = false;
+            this.btnCalculateHL.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // label2
             // 
@@ -341,7 +343,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             // 
             this.redDisplay.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.redDisplay.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.redDisplay.Location = new System.Drawing.Point(1398, 315);
+            this.redDisplay.Location = new System.Drawing.Point(1398, 23);
             this.redDisplay.Name = "redDisplay";
             this.redDisplay.Size = new System.Drawing.Size(431, 608);
             this.redDisplay.TabIndex = 30;
@@ -576,7 +578,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.btnComplete.BackColor = System.Drawing.Color.CadetBlue;
             this.btnComplete.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnComplete.ForeColor = System.Drawing.Color.White;
-            this.btnComplete.Location = new System.Drawing.Point(1143, 875);
+            this.btnComplete.Location = new System.Drawing.Point(1398, 667);
             this.btnComplete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(194, 48);
@@ -810,11 +812,6 @@ namespace PROG_POE_Part1_BudgetPlanner
             // udVRate
             // 
             this.udVRate.DecimalPlaces = 2;
-            this.udVRate.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.udVRate.Location = new System.Drawing.Point(753, 859);
             this.udVRate.Maximum = new decimal(new int[] {
             1316134912,
@@ -859,12 +856,44 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.udPremium.TabIndex = 74;
             this.udPremium.Visible = false;
             // 
+            // btnVehicle
+            // 
+            this.btnVehicle.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnVehicle.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnVehicle.ForeColor = System.Drawing.Color.White;
+            this.btnVehicle.Location = new System.Drawing.Point(1625, 814);
+            this.btnVehicle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnVehicle.Name = "btnVehicle";
+            this.btnVehicle.Size = new System.Drawing.Size(204, 85);
+            this.btnVehicle.TabIndex = 76;
+            this.btnVehicle.Text = "Calculate vehicle repayment";
+            this.btnVehicle.UseVisualStyleBackColor = false;
+            this.btnVehicle.Visible = false;
+            this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
+            // 
+            // btnExpenses
+            // 
+            this.btnExpenses.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnExpenses.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExpenses.ForeColor = System.Drawing.Color.White;
+            this.btnExpenses.Location = new System.Drawing.Point(1625, 667);
+            this.btnExpenses.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(204, 53);
+            this.btnExpenses.TabIndex = 77;
+            this.btnExpenses.Text = "Calculate expenses";
+            this.btnExpenses.UseVisualStyleBackColor = false;
+            this.btnExpenses.Visible = false;
+            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
+            // 
             // frmBudgetPlanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1924, 987);
+            this.Controls.Add(this.btnExpenses);
+            this.Controls.Add(this.btnVehicle);
             this.Controls.Add(this.lblPremium);
             this.Controls.Add(this.udPremium);
             this.Controls.Add(this.lblVInterestRate);
@@ -914,7 +943,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnCalculate);
+            this.Controls.Add(this.btnCalculateHL);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -944,7 +973,7 @@ namespace PROG_POE_Part1_BudgetPlanner
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCalculate;
+        private System.Windows.Forms.Button btnCalculateHL;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -994,6 +1023,8 @@ namespace PROG_POE_Part1_BudgetPlanner
         private System.Windows.Forms.NumericUpDown udVRate;
         private System.Windows.Forms.Label lblPremium;
         private System.Windows.Forms.NumericUpDown udPremium;
+        private System.Windows.Forms.Button btnVehicle;
+        private System.Windows.Forms.Button btnExpenses;
     }
 }
 

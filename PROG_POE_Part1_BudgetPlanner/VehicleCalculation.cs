@@ -15,7 +15,7 @@ namespace PROG_POE_Part1_BudgetPlanner
             //Calculates total monthly vehicle cost 
             //Subtract deposit from puchase price because that is already paid
             //Multiply by interest rate and divide by period of time amount should be paid in
-            VehicleTotalCost = ((PurchasePrice - Deposit) * Interest) / 72.00;
+            VehicleTotalCost = ((PurchasePrice - Deposit) * Interest) / 60.00;
 
             //Returns final value
             return VehicleTotalCost;
