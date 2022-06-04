@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace PROG_POE_Part1_BudgetPlanner
 {
@@ -34,7 +35,7 @@ namespace PROG_POE_Part1_BudgetPlanner
                 btnComplete.Visible = true;
 
                 //Changes home loan button text to display rent
-                btnCalculateHL.Text = "Calculate rent";
+                btnCalculateHL.Text = "Display rent.";
 
                 //Makes relevent components invisible
                 lblPurchasePrice.Visible = false;
@@ -73,6 +74,8 @@ namespace PROG_POE_Part1_BudgetPlanner
                     udRentAmount.Visible = false;
                     btnCalculateHL.Visible = false;
                     redDisplay.Visible = false;
+
+                    btnCalculateHL.Text = "Calculate home loan repayment.";
 
                     //Output component will remain clear
                     redDisplay.Clear();
@@ -149,13 +152,14 @@ namespace PROG_POE_Part1_BudgetPlanner
                 }
 
                 //Ensures that valid vehicle option is given
-                if ((cmbVehicleChoice.SelectedItem != "Yes.") || (cmbVehicleChoice.SelectedItem != "No."))
+                if ((cmbVehicleChoice.SelectedItem != "Yes.") && (cmbVehicleChoice.SelectedItem != "No."))
                 {
-                    //Displays error message to user if input is inavalid 
-                    MessageBox.Show("Please choose valid option.");
-
                     //Calls method to make components invisible so input can be validated before calculated
                     InvisibleDisplay();
+
+                    //Displays error message to user if input is inavalid 
+                    MessageBox.Show("Please choose a valid vehicle choice option.");
+
                 }
                 else
 
@@ -393,15 +397,6 @@ namespace PROG_POE_Part1_BudgetPlanner
 
 
 
-            //Displays relevant values if rent option is chosen
-            if (cmbChooseHousing.SelectedItem == "Renting.")
-            {
-                //Informs user that calculation has already been done
-                MessageBox.Show("Calculated in expense button.");
-
-            }
-            else
-            {
                 if (cmbChooseHousing.SelectedItem == "Buying a Property.")
                 {
                     //calculate a third of this months income
@@ -426,10 +421,16 @@ namespace PROG_POE_Part1_BudgetPlanner
                     Convert.ToString(monthlyAvailableMoney - monthlyRepaymentValue)
                     ;
 
+            }
+            else
+            {
+                //Displays relevant values if rent option is chosen
+            if (cmbChooseHousing.SelectedItem == "Renting.")
+            {
+                //Informs user that calculation has already been done
+                MessageBox.Show("Calculated in expense button.");
 
-
-                }
-
+            }
             }
 
            
